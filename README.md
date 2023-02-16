@@ -38,7 +38,7 @@
 
 
         # MASCOTE
-        <img src="https://o.remove.bg/downloads/7cb6b88f-0b33-4d06-a3cb-12e1c8540560/1e953068bf8df78fa4547beebc79f881-removebg-preview.png">
+        <img src="./assets/mascote.png">
 
 Build with 💙 and ☕ by:
 
