@@ -1,4 +1,4 @@
-# PI - 3º Termo - RUSTEZE
+# PI - 3º Termo - RUSTZ
 
 ## TEMA: CONTROLE DE ESTUFA
 ### Engine utilizada:
