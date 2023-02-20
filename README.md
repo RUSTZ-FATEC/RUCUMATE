@@ -43,10 +43,10 @@
 
 Build with 💙 and ☕ by:
 
-- [JeffeVargasP](https://github.com/JeffeVargasP/)
-- [GioGiuseppe](https://github.com/giogiuseppe/)
-- [VictorKashima](https://github.com/VictorKashima/)
-- [David Marques](https://github.com/DavidMarqss)
-- [Gabriel Calil](https://github.com/calil05)
-- [Marcos Sakaguchi](https://github.com/Marcossakaguchi5)
-- [Luis Cavano](https://github.com/luis-cavano/)
+- [JeffeVargasP](https://github.com/JeffeVargasP/) - Backend - Eletrônica
+- [GioGiuseppe](https://github.com/giogiuseppe/) - Frontend
+- [VictorKashima](https://github.com/VictorKashima/) - Scrum Master - Eletrônica
+- [David Marques](https://github.com/DavidMarqss) - Backend
+- [Gabriel Calil](https://github.com/calil05) - Backend
+- [Marcos Sakaguchi](https://github.com/Marcossakaguchi5) Frontend
+- [Luis Cavano](https://github.com/luis-cavano/) Frontend
