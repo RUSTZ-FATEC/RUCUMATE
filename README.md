@@ -43,7 +43,7 @@
 
 Build with 💙 and ☕ by:
 
-- [JeffeVargasP](https://github.com/JeffeVargasP/) - Backend - Eletrônica
+- [JeffeVargasP](https://github.com/JeffeVargasP/) - Infra - Backend - Eletrônica
 - [GioGiuseppe](https://github.com/giogiuseppe/) - Frontend
 - [VictorKashima](https://github.com/VictorKashima/) - Scrum Master - Eletrônica
 - [David Marques](https://github.com/DavidMarqss) - Backend
