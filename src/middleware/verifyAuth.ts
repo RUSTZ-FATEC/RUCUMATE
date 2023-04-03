@@ -7,7 +7,7 @@ const secret = process.env.JWT_KEY
 
 function verificaToken(req: Request, res: Response, next: NextFunction) {
 
-    const token = req.headers.authorization;
+    const token = req.headers.authorization;    
 
     if (token) {
         jwt.verify(token, secret, (err, decoded) => {

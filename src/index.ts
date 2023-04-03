@@ -33,5 +33,5 @@ app.use((error: any, _: Request, res: Response, next: NextFunction) => {
 })
 
 app.listen(port, () => {
-    console.log('Servidor rodando na porta 3000');
+    console.log(`Servidor rodando na porta ${port}`);
 });
