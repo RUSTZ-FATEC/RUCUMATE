@@ -1,42 +1,36 @@
 import TextField from '@mui/material/TextField';
 
-import { createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 function InputComponent(props: any) {
 
     const theme = createTheme({
         palette: {
             primary: {
-                main: "#FFFFFF",
-            },
+                main: '#388E3C'
+            }
         },
     });
 
     return (
-        <TextField
-            fullWidth
-            label={props.title}
-            id="fullWidth"
-            variant="standard"
-            sx={{
-                mt: 1,
-                '&::after': {
-                    content: "''",
-                    borderBottom: "1px solid #FFFFFF"
-                }
-            }}
-            inputProps={{
-                style: {
-                    color: "#FFFFFF",
-                    borderBottom: "1px solid #FFFFFF"
-                }
-            }}
-            InputLabelProps={{
-                style: {
-                    color: "#FFFFFF"
-                }
-            }}
-        />
+        <ThemeProvider theme={theme}>
+            <TextField
+                fullWidth
+                label={props.title}
+                id="fullWidth"
+                variant="standard"
+                sx={{
+                    mt: 1,
+                    '& label': {
+                        color: "#FFFFFF"
+                    },
+                    '& input': {
+                        color: "#FFFFFF",
+                        borderBottom: "1px solid #FFFFFF"
+                    },
+                }}
+            />
+        </ThemeProvider>
     );
 }
 

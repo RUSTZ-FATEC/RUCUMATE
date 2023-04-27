@@ -1,24 +1,35 @@
 import Button from '@mui/material/Button';
 
-function ButtonComponent(props : any) {
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+function ButtonComponent(props: any) {
+
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: '#388E3C'
+            },
+        },
+    });
+
     return (
-        <Button
-            fullWidth
-            id="fullWidth"
-            variant="contained"
-            sx={{
-                mt: 3,
-                boxShadow: "none",
-                backgroundColor: "#124116",
-                '&:hover': {
-                    color: "#124116",
-                    boxShadow: "none",
-                    backgroundColor: "#e8f5e9"
-                }
-            }}
-            onClick={() => { }}
-        >{props.title}
-        </Button>
+        <ThemeProvider theme={theme}>
+            <Button
+                fullWidth
+                id="fullWidth"
+                variant="contained"
+                disableElevation={true}
+                sx={{
+                    mt: 3,
+                    backgroundColor: "primary",
+                    '&:hover': {
+                        backgroundColor: "primary"
+                    }
+                }}
+                onClick={() => { }}
+            >{props.title}
+            </Button>
+        </ThemeProvider>
     );
 }
 
