@@ -7,3 +7,15 @@
     text-align: center;
     color: #FFFFFF;
 }
+
+.title_account {
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.title_link_account {
+    font-size: 14px;
+    color: #388E3C;
+    text-decoration: none;
+    margin-left: 5px;
+}

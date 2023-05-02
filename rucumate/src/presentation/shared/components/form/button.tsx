@@ -1,9 +1,8 @@
 import Button from '@mui/material/Button';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function ButtonComponent(props: any) {
-
     const theme = createTheme({
         palette: {
             primary: {
@@ -13,23 +12,25 @@ function ButtonComponent(props: any) {
     });
 
     return (
-        <ThemeProvider theme={theme}>
-            <Button
-                fullWidth
-                id="fullWidth"
-                variant="contained"
-                disableElevation={true}
-                sx={{
-                    mt: 3,
-                    backgroundColor: "primary",
-                    '&:hover': {
-                        backgroundColor: "primary"
-                    }
-                }}
-                onClick={() => { }}
-            >{props.title}
-            </Button>
-        </ThemeProvider>
+        <>
+            <ThemeProvider theme={theme}>
+                <Button
+                    fullWidth
+                    id="fullWidth"
+                    variant="contained"
+                    disableElevation={true}
+                    sx={{
+                        mt: 3,
+                        backgroundColor: "primary",
+                        '&:hover': {
+                            backgroundColor: "primary"
+                        }
+                    }}
+                    onClick={props.onClick}
+                >{props.title}
+                </Button>
+            </ThemeProvider>
+        </>
     );
 }
 
