@@ -14,7 +14,7 @@ import AccountComponent from '../shared/components/form/account';
 import { IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-export const SinginComponent: React.FC = () => {
+export const SignInComponent: React.FC = () => {
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -23,14 +23,13 @@ export const SinginComponent: React.FC = () => {
     const [error, setError] = useState(false);
 
     const handleButtonClick = () => {
-        if (username.trim() === '') {
-            setError(true);
-        }
-        if (password.trim() === '') {
+        
+        if (username.trim() === '' || password.trim() === '') {
             setError(true);
         } else {
             setError(false);
-            // consumo de api aqui
+            window.alert("Login realizado com sucesso")
+
         }
     };
 
