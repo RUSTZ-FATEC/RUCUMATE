@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-const GraphicComponent = () => {
+const GraphicComponent = (props: { data1: any; data2: any; }) => {
+  const { data1, data2 } = props;
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -11,14 +12,14 @@ const GraphicComponent = () => {
       const option = {
         xAxis: {
           type: 'category',
-          data: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
+          data: data1
         },
         yAxis: {
           type: 'value'
         },
         series: [
           {
-            data: [120, 200, 150, 80, 70, 110, 130],
+            data: data2,
             type: 'bar',
             showBackground: true,
             backgroundStyle: {

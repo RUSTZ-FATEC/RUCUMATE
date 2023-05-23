@@ -5,37 +5,37 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper";
 
-function CarouselComponent(props: any) {
+function CarouselNotificationComponent(props: any) {
     const slides = [
         {
-            id: 1,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/0000",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         },
         {
-            id: 2,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/0000",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         },
         {
-            id: 3,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/00",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         },
         {
-            id: 4,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/0000",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         },
         {
-            id: 5,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/0000",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         },
         {
-            id: 6,
-            user: "User",
-            model: "XYZ"
+            data: "00/00/0000",
+            time: "00:00:00",
+            description: "Lorem Ipsum"
         }
     ];
 
@@ -60,16 +60,16 @@ function CarouselComponent(props: any) {
                 {slides.map((slide) => (
                     <SwiperSlide>
                         <span>
-                            <strong>ID:</strong>
-                            {slide.id}
+                            <strong>Data:</strong>
+                            {slide.data}
                         </span>
                         <span>
-                            <strong>Usuário:</strong>
-                            {slide.user}
+                            <strong>Horário:</strong>
+                            {slide.time}
                         </span>
                         <span>
-                            <strong>Modelo:</strong>
-                            {slide.model}
+                            <strong>Descrição:</strong>
+                            {slide.description}
                         </span>
                     </SwiperSlide>
                 ))}
@@ -78,4 +78,4 @@ function CarouselComponent(props: any) {
     );
 }
 
-export default CarouselComponent;
+export default CarouselNotificationComponent;

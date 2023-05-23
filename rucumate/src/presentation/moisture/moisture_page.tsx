@@ -1,7 +1,8 @@
 import * as React from 'react';
 import NavComponent from '../shared/components/home/nav';
 import GraphicComponent from '../shared/components/home/graphic';
-import CarouselComponent from '../shared/components/home/carousel';
+import CarouselInfoComponent from '../shared/components/home/carousel_info';
+import CarouselUpdateComponent from '../shared/components/home/carousel_update';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -14,6 +15,7 @@ export const MoistureComponent: React.FC = () => {
 
     return (
         <>
+            <br />
             <NavComponent
                 logo={Logo}
                 navicon1='/umidade'
@@ -26,10 +28,18 @@ export const MoistureComponent: React.FC = () => {
                 icon4={ProfileIcon}
                 logout={LogoutIcon}
             />
-            <GraphicComponent />
-            <CarouselComponent
+            <GraphicComponent
+                data1={['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']}
+                data2={[120, 200, 150, 80, 70, 110, 130]}
+            />
+            <CarouselInfoComponent
                 title='Informações dos sensores:'
             />
+            <CarouselUpdateComponent
+                title='Últimas atualizações'
+                sensor_title='Úmidade:'
+            />
+            <br />
         </>
     );
 }
