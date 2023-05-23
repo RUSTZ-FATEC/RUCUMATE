@@ -14,33 +14,10 @@ import AccountComponent from '../shared/components/form/account';
 import { IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-export const SingupComponent: React.FC = () => {
+export const SignupComponent: React.FC = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [confirmShowPassword, setConfirmShowPassword] = useState(false);
-
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState(false);
-
-    const handleButtonClick = () => {
-        if (username.trim() === '') {
-            setError(true);
-        }
-        if (email.trim() === '') {
-            setError(true);
-        }
-        if (password.trim() === '') {
-            setError(true);
-        } if (confirmPassword.trim() === '') {
-            setError(true);
-        } else {
-            setError(false);
-            // consumo de api aqui
-        }
-    };
 
     return (
         <>
@@ -58,19 +35,11 @@ export const SingupComponent: React.FC = () => {
                 {
                     <InputComponent
                         title="Usuário"
-                        value={username}
-                        onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setUsername(event.target.value)}
-                        error={error}
-                        helperText={error ? 'Este campo é obrigatório' : ''}
                     />
                 }
                 {
                     <InputComponent
                         title="E-mail"
-                        value={email}
-                        onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setEmail(event.target.value)}
-                        error={error}
-                        helperText={error ? 'Este campo é obrigatório' : ''}
                     />
                 }
                 <Box sx={{
@@ -95,10 +64,6 @@ export const SingupComponent: React.FC = () => {
                                     </IconButton>
                                 ),
                             }}
-                            value={password}
-                            onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setPassword(event.target.value)}
-                            error={error}
-                            helperText={error ? 'Este campo é obrigatório' : ''}
                         />
                     }
                     <Box sx={{
@@ -122,17 +87,12 @@ export const SingupComponent: React.FC = () => {
                                     </IconButton>
                                 ),
                             }}
-                            value={confirmPassword}
-                            onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setConfirmPassword(event.target.value)}
-                            error={error}
-                            helperText={error ? 'Este campo é obrigatório' : ''}
                         />
                     }
                 </Box>
                 {
                     <ButtonComponent
                         title="Cadastrar"
-                        onClick={handleButtonClick}
                     />
                 }
                 <Box

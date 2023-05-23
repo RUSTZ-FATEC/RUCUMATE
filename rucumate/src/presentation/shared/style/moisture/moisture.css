@@ -1,0 +1,273 @@
+.nav-container {
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100vh;
+    border-radius: 0 32px 32px 0;
+    background-color: #100F10;
+    position: fixed;
+}
+
+.nav-content {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
+
+.nav-icon-test-1 {
+    top: 0;
+    height: 35px;
+    margin: 20px;
+    position: fixed;
+}
+
+.nav-icon-test-2 {
+    bottom: 0;
+    height: 25px;
+    margin: 20px;
+    position: fixed;
+}
+
+.nav-icon {
+    height: 30px;
+    margin: 10px;
+}
+
+a {
+    display: grid;
+    place-items: center;
+}
+
+a:hover {
+    width: 50px;
+    background-color: #00960A;
+    border-radius: 100%;
+    transition: .5s;
+}
+
+.title-carousel {
+    font-size: clamp(16px, 2vw, 24px);
+    text-align: center;
+    color: #D6E1E0;
+}
+
+.swiper {
+    width: 100%;
+    max-width: 600px;
+}
+
+.swiper-slide {
+    border-radius: 10px;
+    background-color: #100F10;
+    width: clamp(10vw, 10em, 100vw);
+    height: clamp(10vh, 6em, 100vh);
+}
+
+.swiper-slide {
+    display: grid;
+    place-items: start;
+    place-content: center;
+    grid-template-columns: auto;
+}
+
+span {
+    gap: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+    font-size: 14px;
+    color: #D6E1E0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #00960A;
+}
+
+.graphic {
+    width: clamp(10vw, 40em, 100vw);
+    min-height: clamp(10vh, 24em, 100vh);
+}
+
+@media screen and (max-width: 768px) {
+    .swiper {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .nav-container {
+        width: 100vw;
+        height: 60px;
+        border-radius: 0;
+    }
+
+    .nav-content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .nav-icon-test-1 {
+        display: none;
+    }
+
+    .nav-icon-test-2 {
+        display: none;
+    }
+
+    a:hover {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        border-radius: 0;
+        transition: none;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 320px) {
+    .nav-container {
+        width: 100vw;
+        height: 50px;
+        border-radius: 0;
+    }
+
+    .nav-icon {
+        height: 25px;
+    }
+}.nav-container {
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100vh;
+    border-radius: 0 32px 32px 0;
+    background-color: #100F10;
+    position: fixed;
+}
+
+.nav-content {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
+
+.nav-icon-test-1 {
+    top: 0;
+    height: 35px;
+    margin: 20px;
+    position: fixed;
+}
+
+.nav-icon-test-2 {
+    bottom: 0;
+    height: 25px;
+    margin: 20px;
+    position: fixed;
+}
+
+.nav-icon {
+    height: 30px;
+    margin: 10px;
+}
+
+a {
+    display: grid;
+    place-items: center;
+}
+
+a:hover {
+    width: 50px;
+    background-color: #00960A;
+    border-radius: 100%;
+    transition: .5s;
+}
+
+.title-carousel {
+    font-size: clamp(16px, 2vw, 24px);
+    text-align: center;
+    color: #D6E1E0;
+}
+
+.swiper {
+    width: 100%;
+    max-width: 600px;
+}
+
+.swiper-slide {
+    border-radius: 10px;
+    background-color: #100F10;
+    width: clamp(10vw, 10em, 100vw);
+    height: clamp(10vh, 6em, 100vh);
+}
+
+.swiper-slide {
+    display: grid;
+    place-items: start;
+    place-content: center;
+    grid-template-columns: auto;
+}
+
+span {
+    gap: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+    font-size: 14px;
+    color: #D6E1E0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #00960A;
+}
+
+.graphic {
+    width: clamp(10vw, 40em, 100vw);
+    min-height: clamp(10vh, 24em, 100vh);
+}
+
+@media screen and (max-width: 768px) {
+    .swiper {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .nav-container {
+        width: 100vw;
+        height: 60px;
+        border-radius: 0;
+    }
+
+    .nav-content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .nav-icon-test-1 {
+        display: none;
+    }
+
+    .nav-icon-test-2 {
+        display: none;
+    }
+
+    a:hover {
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        border-radius: 0;
+        transition: none;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 320px) {
+    .nav-container {
+        width: 100vw;
+        height: 50px;
+        border-radius: 0;
+    }
+
+    .nav-icon {
+        height: 25px;
+    }
+}

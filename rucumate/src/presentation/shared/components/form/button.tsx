@@ -6,7 +6,7 @@ function ButtonComponent(props: any) {
     const theme = createTheme({
         palette: {
             primary: {
-                main: '#388E3C'
+                main: '#00960A'
             },
         },
     });

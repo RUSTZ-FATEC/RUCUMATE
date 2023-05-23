@@ -1,12 +1,12 @@
-import { SinginComponent } from '../singin_page';
+import { SignupComponent } from '../signup_page';
 
 import '../../shared/style/main.css';
 import '../../shared/style/form/form.css';
 
-export const SinginPage: React.FC = () => {
+export const SignupPage: React.FC = () => {
     return(
         <>
-            <SinginComponent />
+            <SignupComponent />
         </>
     );
 }

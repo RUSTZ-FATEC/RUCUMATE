@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
 
-import Logo from '../../assets/images/logo.svg';
-
 import BoxComponent from '../shared/components/form/box';
 import TitleComponent from '../shared/components/form/title';
 import LogoComponent from '../shared/components/form/logo';
@@ -14,25 +12,11 @@ import AccountComponent from '../shared/components/form/account';
 import { IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-export const SinginComponent: React.FC = () => {
+import Logo from '../../assets/images/logo.svg';
+
+export const SigninComponent: React.FC = () => {
 
     const [showPassword, setShowPassword] = useState(false);
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
-
-    const handleButtonClick = () => {
-        if (username.trim() === '') {
-            setError(true);
-        }
-        if (password.trim() === '') {
-            setError(true);
-        } else {
-            setError(false);
-            // consumo de api aqui
-        }
-    };
 
     return (
         <>
@@ -50,10 +34,6 @@ export const SinginComponent: React.FC = () => {
                 {
                     <InputComponent
                         title="Usuário"
-                        value={username}
-                        onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setUsername(event.target.value)}
-                        error={error}
-                        helperText={error ? 'Este campo é obrigatório' : ''}
                     />
                 }
                 {
@@ -70,16 +50,11 @@ export const SinginComponent: React.FC = () => {
                                 </IconButton>
                             ),
                         }}
-                        value={password}
-                        onChange={(event: { target: { value: React.SetStateAction<string>; }; }) => setPassword(event.target.value)}
-                        error={error}
-                        helperText={error ? 'Este campo é obrigatório' : ''}
                     />
                 }
                 {
                     <ButtonComponent
                         title="Entrar"
-                        onClick={handleButtonClick}
                     />
                 }
                 <Box
