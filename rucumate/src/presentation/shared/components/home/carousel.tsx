@@ -58,7 +58,7 @@ function CarouselComponent(props: any) {
                 }}
             >
                 {slides.map((slide) => (
-                    <SwiperSlide key={slide.id}>
+                    <SwiperSlide>
                         <span>
                             <strong>ID:</strong>
                             {slide.id}

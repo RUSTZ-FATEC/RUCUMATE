@@ -1,7 +1,7 @@
 import * as React from 'react';
-import NavComponent from '../shared/components/moisture/nav';
-import GraphicComponent from '../shared/components/moisture/graphic';
-import CarouselComponent from '../shared/components/moisture/carousel';
+import NavComponent from '../shared/components/home/nav';
+import GraphicComponent from '../shared/components/home/graphic';
+import CarouselComponent from '../shared/components/home/carousel';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -20,17 +20,16 @@ export const MoistureComponent: React.FC = () => {
                 icon1={MoistureIcon}
                 navicon2='/temperatura'
                 icon2={TemperatureIcon}
-                navicon3='#'
+                navicon3='/notificacao'
                 icon3={NotificationIcon}
-                navicon4='#'
+                navicon4='/perfil'
                 icon4={ProfileIcon}
-                icon5={LogoutIcon}
+                logout={LogoutIcon}
             />
             <GraphicComponent />
             <CarouselComponent
                 title='Informações dos sensores:'
             />
-            <br />
         </>
     );
 }

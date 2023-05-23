@@ -1,7 +1,5 @@
 import * as React from 'react';
 import NavComponent from '../shared/components/home/nav';
-import GraphicComponent from '../shared/components/home/graphic';
-import CarouselComponent from '../shared/components/home/carousel';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -10,7 +8,9 @@ import NotificationIcon from '../../assets/images/icons/notification.svg';
 import ProfileIcon from '../../assets/images/icons/profile.svg';
 import LogoutIcon from '../../assets/images/icons/logout.svg';
 
-export const TemperatureComponent: React.FC = () => {
+import TitleComponent from '../shared/components/form/title';
+
+export const NotificationComponent: React.FC = () => {
 
     return (
         <>
@@ -26,9 +26,8 @@ export const TemperatureComponent: React.FC = () => {
                 icon4={ProfileIcon}
                 logout={LogoutIcon}
             />
-            <GraphicComponent />
-            <CarouselComponent
-                title='Informações dos sensores:'
+            <TitleComponent
+                title='Notificações'
             />
         </>
     );
