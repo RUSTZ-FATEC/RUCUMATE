@@ -41,7 +41,7 @@ function renderRow(item: ItemData) {
         <Box
           sx={{
             width: '100%',
-            padding: '5px',
+            padding: '3px',
             borderRadius: '10px',
             backgroundColor: '#100F10',
           }}
@@ -68,7 +68,7 @@ function ListComponent() {
 
   return (
     <>
-      <Box sx={{ width: '100%', height: 400, maxWidth: 360, bgcolor: 'transparent', overflow: 'auto' }}>
+      <Box sx={{ width: '100%', maxWidth: '700px', height: 400, bgcolor: 'transparent', overflow: 'auto' }}>
         <List style={{ padding: 0 }}>
           {data.map((item) => renderRow(item))}
         </List>

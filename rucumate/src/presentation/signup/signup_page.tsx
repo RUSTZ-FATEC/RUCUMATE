@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
+import ContainerComponent from '../shared/components/container';
+
 import Box from '@mui/material/Box';
 
-import Logo from '../../assets/images/logo.svg';
-
 import BoxComponent from '../shared/components/form/box';
-import TitleComponent from '../shared/components/form/title';
 import LogoComponent from '../shared/components/form/logo';
+import Logo from '../../assets/images/logo.svg';
+import TitleComponent from '../shared/components/title';
 import InputComponent from '../shared/components/form/input';
 import ButtonComponent from '../shared/components/form/button';
 import AccountComponent from '../shared/components/form/account';
@@ -71,42 +72,34 @@ export const SignupComponent: React.FC = () => {
 
     return (
         <>
-            <BoxComponent>
-                {
+            <ContainerComponent>
+                <BoxComponent>
                     <LogoComponent
                         logo={Logo}
                     />
-                }
-                {
                     <TitleComponent
                         title="Cadastro"
                     />
-                }
-                {
                     <InputComponent
                         title="Usuário"
                         value={username}
                         onChange={handleUsernameChange}
                         error={usernameError}
                     />
-                }
-                {
                     <InputComponent
                         title="E-mail"
                         value={email}
                         onChange={handleEmailChange}
                         error={emailError}
                     />
-                }
-                <Box sx={{
-                    display: "grid",
-                    gridTemplateColumns: "auto auto auto",
-                    '@media screen and (max-width: 600px)': {
+                    <Box sx={{
                         display: "grid",
-                        gridTemplateColumns: "auto"
-                    },
-                }}>
-                    {
+                        gridTemplateColumns: "auto auto auto",
+                        '@media screen and (max-width: 600px)': {
+                            display: "grid",
+                            gridTemplateColumns: "auto"
+                        },
+                    }}>
                         <InputComponent
                             title="Senha"
                             type={showPassword ? "text" : "password"}
@@ -125,15 +118,13 @@ export const SignupComponent: React.FC = () => {
                                 ),
                             }}
                         />
-                    }
-                    <Box sx={{
-                        m: "15px",
-                        '@media screen and (max-width: 600px)': {
-                            m: "0"
-                        }
-                    }}
-                    />
-                    {
+                        <Box sx={{
+                            m: "15px",
+                            '@media screen and (max-width: 600px)': {
+                                m: "0"
+                            }
+                        }}
+                        />
                         <InputComponent
                             title="Confirmar senha"
                             type={confirmShowPassword ? "text" : "password"}
@@ -152,67 +143,63 @@ export const SignupComponent: React.FC = () => {
                                 ),
                             }}
                         />
-                    }
-                </Box>
-                {
+                    </Box>
                     <ButtonComponent
                         title="Cadastrar"
                         onClick={handleSignup}
                     />
-                }
-                <Box
-                    sx={{
-                        display: "grid",
-                        gridTemplateColumns: "auto auto",
-                        placeItems: "center",
-                        mt: "10px",
-                        '@media screen and (max-width: 600px)': {
+                    <Box
+                        sx={{
                             display: "grid",
-                            gridTemplateColumns: "auto",
+                            gridTemplateColumns: "auto auto",
                             placeItems: "center",
-                            mt: "10px"
-                        }
-                    }}
-                >
-                    {
+                            mt: "10px",
+                            '@media screen and (max-width: 600px)': {
+                                display: "grid",
+                                gridTemplateColumns: "auto",
+                                placeItems: "center",
+                                mt: "10px"
+                            }
+                        }}
+                    >
                         <AccountComponent
                             title="Já possui uma conta cadastrada?"
                             title_link="Login"
                             href="/login"
                         />
-                    }
-                </Box>
-            </BoxComponent>
-            <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={4000}
-                onClose={handleCloseSnackbar}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center'
-                }}
-            >
-                <SnackbarContent
-                    sx={{
-                        backgroundColor: "#100F10",
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                    </Box>
+                </BoxComponent>
+                <Snackbar
+                    open={snackbarOpen}
+                    autoHideDuration={4000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center'
                     }}
-                    message={
-                        <Box
-                            display="flex"
-                            alignItems="center"
-                        >
-                            <Info
-                                sx={{
-                                    marginRight: "8px"
-                                }}
-                            />
-                            <span>Preencha todos os campos.</span>
-                        </Box>
-                    }
-                />
-            </Snackbar>
+                >
+                    <SnackbarContent
+                        sx={{
+                            backgroundColor: "#100F10",
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        message={
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                            >
+                                <Info
+                                    sx={{
+                                        marginRight: "8px"
+                                    }}
+                                />
+                                <span>Preencha todos os campos.</span>
+                            </Box>
+                        }
+                    />
+                </Snackbar>
+            </ContainerComponent>
         </>
     );
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import NavComponent from '../shared/components/nav/nav';
+import NavComponent from '../shared/components/nav';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -8,8 +8,10 @@ import NotificationIcon from '../../assets/images/icons/notification.svg';
 import ProfileIcon from '../../assets/images/icons/profile.svg';
 import LogoutIcon from '../../assets/images/icons/logout.svg';
 
-import TitleComponent from '../shared/components/form/title';
-import ListComponent from '../shared/components/notification/list';
+import ContainerComponent from '../shared/components/container';
+
+import TitleComponent from '../shared/components/title';
+import ListComponent from '../shared/components/list';
 
 export const NotificationComponent: React.FC = () => {
 
@@ -27,10 +29,12 @@ export const NotificationComponent: React.FC = () => {
                 icon4={ProfileIcon}
                 logout={LogoutIcon}
             />
-            <TitleComponent
-                title='Notificações'
-            />
-            <ListComponent />
+            <ContainerComponent>
+                <TitleComponent
+                    title='Notificações'
+                />
+                <ListComponent />
+            </ContainerComponent>
         </>
     );
 }

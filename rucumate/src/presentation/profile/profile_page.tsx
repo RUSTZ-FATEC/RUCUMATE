@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavComponent from '../shared/components/nav/nav';
+import NavComponent from '../shared/components/nav';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -8,10 +8,12 @@ import NotificationIcon from '../../assets/images/icons/notification.svg';
 import ProfileIcon from '../../assets/images/icons/profile.svg';
 import LogoutIcon from '../../assets/images/icons/logout.svg';
 
+import ContainerComponent from '../shared/components/container';
+
 import Box from '@mui/material/Box';
 
 import BoxComponent from '../shared/components/form/box';
-import TitleComponent from '../shared/components/form/title';
+import TitleComponent from '../shared/components/title';
 import InputComponent from '../shared/components/form/input';
 import ButtonComponent from '../shared/components/form/button';
 import { IconButton, Snackbar, SnackbarContent } from "@mui/material";
@@ -87,37 +89,31 @@ export const ProfileComponent: React.FC = () => {
                 icon4={ProfileIcon}
                 logout={LogoutIcon}
             />
-            <BoxComponent>
-                {
+            <ContainerComponent>
+                <BoxComponent>
                     <TitleComponent
                         title="Meu Perfil"
                     />
-                }
-                {
                     <InputComponent
                         title="Usuário"
                         value={username}
                         onChange={handleUsernameChange}
                         error={usernameError}
                     />
-                }
-                {
                     <InputComponent
                         title="E-mail"
                         value={email}
                         onChange={handleEmailChange}
                         error={emailError}
                     />
-                }
-                <Box sx={{
-                    display: "grid",
-                    gridTemplateColumns: "auto auto auto",
-                    '@media screen and (max-width: 600px)': {
+                    <Box sx={{
                         display: "grid",
-                        gridTemplateColumns: "auto"
-                    },
-                }}>
-                    {
+                        gridTemplateColumns: "auto auto auto",
+                        '@media screen and (max-width: 600px)': {
+                            display: "grid",
+                            gridTemplateColumns: "auto"
+                        },
+                    }}>
                         <InputComponent
                             title="Senha"
                             type={showPassword ? "text" : "password"}
@@ -136,15 +132,13 @@ export const ProfileComponent: React.FC = () => {
                                 ),
                             }}
                         />
-                    }
-                    <Box sx={{
-                        m: "15px",
-                        '@media screen and (max-width: 600px)': {
-                            m: "0"
-                        }
-                    }}
-                    />
-                    {
+                        <Box sx={{
+                            m: "15px",
+                            '@media screen and (max-width: 600px)': {
+                                m: "0"
+                            }
+                        }}
+                        />
                         <InputComponent
                             title="Confirmar senha"
                             type={confirmShowPassword ? "text" : "password"}
@@ -163,45 +157,43 @@ export const ProfileComponent: React.FC = () => {
                                 ),
                             }}
                         />
-                    }
-                </Box>
-                {
+                    </Box>
                     <ButtonComponent
                         title="Atualizar"
                         onClick={handleUpdateProfile}
                     />
-                }
-            </BoxComponent>
-            <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={4000}
-                onClose={handleCloseSnackbar}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center'
-                }}
-            >
-                <SnackbarContent
-                    sx={{
-                        backgroundColor: "#100F10",
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                </BoxComponent>
+                <Snackbar
+                    open={snackbarOpen}
+                    autoHideDuration={4000}
+                    onClose={handleCloseSnackbar}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center'
                     }}
-                    message={
-                        <Box
-                            display="flex"
-                            alignItems="center"
-                        >
-                            <Info
-                                sx={{
-                                    marginRight: "8px"
-                                }}
-                            />
-                            <span>Preencha todos os campos.</span>
-                        </Box>
-                    }
-                />
-            </Snackbar>
+                >
+                    <SnackbarContent
+                        sx={{
+                            backgroundColor: "#100F10",
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        message={
+                            <Box
+                                display="flex"
+                                alignItems="center"
+                            >
+                                <Info
+                                    sx={{
+                                        marginRight: "8px"
+                                    }}
+                                />
+                                <span>Preencha todos os campos.</span>
+                            </Box>
+                        }
+                    />
+                </Snackbar>
+            </ContainerComponent>
         </>
     );
 }

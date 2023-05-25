@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 
 import { Navigation } from "swiper";
 
-function CarouselInfoComponent(props: any) {
+function CarouselComponent() {
     const slides = [
         {
             id: 1,
@@ -41,7 +41,6 @@ function CarouselInfoComponent(props: any) {
 
     return (
         <>
-            <h1 className="title-carousel">{props.title}</h1>
             <Swiper
                 navigation={true}
                 modules={[Navigation]}
@@ -78,4 +77,4 @@ function CarouselInfoComponent(props: any) {
     );
 }
 
-export default CarouselInfoComponent;
+export default CarouselComponent;
