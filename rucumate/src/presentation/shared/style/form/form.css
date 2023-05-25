@@ -11,11 +11,13 @@
 .title_account {
     font-size: 14px;
     color: #D6E1E0;
+    text-align: center;
 }
 
 .title_link_account {
     font-size: 14px;
     color: #00960A;
+    text-align: center;
     text-decoration: none;
     margin-left: 5px;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import NavComponent from '../shared/components/home/nav';
+import NavComponent from '../shared/components/nav/nav';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -9,7 +9,7 @@ import ProfileIcon from '../../assets/images/icons/profile.svg';
 import LogoutIcon from '../../assets/images/icons/logout.svg';
 
 import TitleComponent from '../shared/components/form/title';
-import CarouselNotificationComponent from '../shared/components/notification/carousel_notification';
+import ListComponent from '../shared/components/notification/list';
 
 export const NotificationComponent: React.FC = () => {
 
@@ -30,7 +30,7 @@ export const NotificationComponent: React.FC = () => {
             <TitleComponent
                 title='Notificações'
             />
-            <CarouselNotificationComponent />
+            <ListComponent />
         </>
     );
 }

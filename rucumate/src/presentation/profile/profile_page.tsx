@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavComponent from '../shared/components/home/nav';
+import NavComponent from '../shared/components/nav/nav';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -14,14 +14,52 @@ import BoxComponent from '../shared/components/form/box';
 import TitleComponent from '../shared/components/form/title';
 import InputComponent from '../shared/components/form/input';
 import ButtonComponent from '../shared/components/form/button';
-
-import { IconButton } from "@mui/material";
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { IconButton, Snackbar, SnackbarContent } from "@mui/material";
+import { Info, Visibility, VisibilityOff } from '@mui/icons-material';
 
 export const ProfileComponent: React.FC = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [confirmShowPassword, setConfirmShowPassword] = useState(false);
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+    const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(event.target.value);
+        setSnackbarOpen(false);
+    };
+
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+        setSnackbarOpen(false);
+    };
+
+    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
+        setSnackbarOpen(false);
+    };
+
+    const handleConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(event.target.value);
+        setSnackbarOpen(false);
+    };
+
+    const handleUpdateProfile = () => {
+        if (username.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
+            setSnackbarOpen(true);
+        } else {
+            // Fazer a lógica de autenticação aqui
+            window.location.href = "";
+        }
+    };
+
+    const handleCloseSnackbar = () => {
+        setSnackbarOpen(false);
+    };
 
     return (
         <>
@@ -46,11 +84,15 @@ export const ProfileComponent: React.FC = () => {
                 {
                     <InputComponent
                         title="Usuário"
+                        value={username}
+                        onChange={handleUsernameChange}
                     />
                 }
                 {
                     <InputComponent
                         title="E-mail"
+                        value={email}
+                        onChange={handleEmailChange}
                     />
                 }
                 <Box sx={{
@@ -65,9 +107,12 @@ export const ProfileComponent: React.FC = () => {
                         <InputComponent
                             title="Senha"
                             type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={handlePasswordChange}
                             InputProps={{
                                 endAdornment: (
                                     <IconButton
+                                        disableRipple
                                         onClick={() => setShowPassword(!showPassword)}
                                         sx={{ color: "#FFFFFF" }}
                                     >
@@ -88,9 +133,12 @@ export const ProfileComponent: React.FC = () => {
                         <InputComponent
                             title="Confirmar senha"
                             type={confirmShowPassword ? "text" : "password"}
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
                             InputProps={{
                                 endAdornment: (
                                     <IconButton
+                                        disableRipple
                                         onClick={() => setConfirmShowPassword(!confirmShowPassword)}
                                         sx={{ color: "#FFFFFF" }}
                                     >
@@ -104,9 +152,31 @@ export const ProfileComponent: React.FC = () => {
                 {
                     <ButtonComponent
                         title="Atualizar"
+                        onClick={handleUpdateProfile}
                     />
                 }
             </BoxComponent>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={4000}
+                onClose={handleCloseSnackbar}
+            >
+                <SnackbarContent
+                    sx={{
+                        backgroundColor: "#100F10",
+                        alignItems: 'center',
+                    }}
+                    message={
+                        <Box
+                            display="flex"
+                            alignItems="center"
+                        >
+                            <Info sx={{ marginRight: "8px" }} />
+                            <span>Preencha todos os campos.</span>
+                        </Box>
+                    }
+                />
+            </Snackbar>
         </>
     );
 }

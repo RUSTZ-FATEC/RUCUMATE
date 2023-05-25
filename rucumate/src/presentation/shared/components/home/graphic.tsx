@@ -15,7 +15,10 @@ const GraphicComponent = (props: { data1: any; data2: any; }) => {
           data: data1
         },
         yAxis: {
-          type: 'value'
+          type: 'value',
+          axisLabel: {
+            show: false
+          }
         },
         series: [
           {
@@ -50,7 +53,11 @@ const GraphicComponent = (props: { data1: any; data2: any; }) => {
     }
   }, []);
 
-  return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
+  return (
+    <>
+      <div ref={chartRef} style={{ width: '100%', height: '400px' }} />
+    </>
+  );
 };
 
 export default GraphicComponent;

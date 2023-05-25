@@ -17,6 +17,7 @@ function NavComponent(props: any) {
                 aria-label="menu"
                 edge="start"
                 onClick={handleDrawerToggle}
+                disableRipple
                 sx={{ position: 'fixed', top: '0', left: '15px', zIndex: 999, color: '#D6E1E0' }}
             >
                 <Menu />
@@ -52,28 +53,36 @@ function NavComponent(props: any) {
                             position: 'fixed'
                         }}
                     />
-                    <a href={props.navicon1}>
+                    <a
+                        href={props.navicon1}
+                    >
                         <img
                             src={props.icon1}
                             alt="..."
                             className="nav-icon"
                         />
                     </a>
-                    <a href={props.navicon2}>
+                    <a
+                        href={props.navicon2}
+                    >
                         <img
                             src={props.icon2}
                             alt="..."
                             className="nav-icon"
                         />
                     </a>
-                    <a href={props.navicon3}>
+                    <a
+                        href={props.navicon3}
+                    >
                         <img
                             src={props.icon3}
                             alt="..."
                             className="nav-icon"
                         />
                     </a>
-                    <a href={props.navicon4}>
+                    <a
+                        href={props.navicon4}
+                    >
                         <img
                             src={props.icon4}
                             alt="..."
@@ -89,7 +98,9 @@ function NavComponent(props: any) {
                             position: 'fixed',
                             background: 'none'
                         }}
-                        onClick={() => {}}
+                        onClick={() => {
+                            window.location.href = "/login";
+                        }}
                     >
                         <img
                             src={props.logout}

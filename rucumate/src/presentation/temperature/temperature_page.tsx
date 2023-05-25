@@ -1,8 +1,7 @@
 import * as React from 'react';
-import NavComponent from '../shared/components/home/nav';
+import NavComponent from '../shared/components/nav/nav';
 import GraphicComponent from '../shared/components/home/graphic';
 import CarouselInfoComponent from '../shared/components/home/carousel_info';
-import CarouselUpdateComponent from '../shared/components/home/carousel_update';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -15,7 +14,6 @@ export const TemperatureComponent: React.FC = () => {
 
     return (
         <>
-            <br />
             <NavComponent
                 logo={Logo}
                 navicon1='/umidade'
@@ -35,11 +33,6 @@ export const TemperatureComponent: React.FC = () => {
             <CarouselInfoComponent
                 title='Informações dos sensores:'
             />
-            <CarouselUpdateComponent
-                title='Últimas atualizações'
-                sensor_title='Temperatura:'
-            />
-            <br />
         </>
     );
 }

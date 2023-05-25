@@ -19,6 +19,7 @@ function ButtonComponent(props: any) {
                     id="fullWidth"
                     variant="contained"
                     disableElevation={true}
+                    disableRipple
                     sx={{
                         mt: 3,
                         backgroundColor: "primary",
