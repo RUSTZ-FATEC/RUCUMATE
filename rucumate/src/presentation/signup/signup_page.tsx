@@ -23,30 +23,42 @@ export const SignupComponent: React.FC = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [usernameError, setUsernameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
         setSnackbarOpen(false);
+        setUsernameError(false);
     };
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
         setSnackbarOpen(false);
+        setEmailError(false);
     };
 
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
         setSnackbarOpen(false);
+        setPasswordError(false);
     };
 
     const handleConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(event.target.value);
         setSnackbarOpen(false);
+        setConfirmPasswordError(false);
     };
 
     const handleSignup = () => {
         if (username.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
             setSnackbarOpen(true);
+            setUsernameError(username.trim() === "");
+            setEmailError(email.trim() === "");
+            setPasswordError(password.trim() === "");
+            setConfirmPasswordError(confirmPassword.trim() === "");
         } else {
             // Fazer a lógica de autenticação aqui
             window.location.href = "/login";
@@ -75,6 +87,7 @@ export const SignupComponent: React.FC = () => {
                         title="Usuário"
                         value={username}
                         onChange={handleUsernameChange}
+                        error={usernameError}
                     />
                 }
                 {
@@ -82,6 +95,7 @@ export const SignupComponent: React.FC = () => {
                         title="E-mail"
                         value={email}
                         onChange={handleEmailChange}
+                        error={emailError}
                     />
                 }
                 <Box sx={{
@@ -98,6 +112,7 @@ export const SignupComponent: React.FC = () => {
                             type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={handlePasswordChange}
+                            error={passwordError}
                             InputProps={{
                                 endAdornment: (
                                     <IconButton
@@ -124,6 +139,7 @@ export const SignupComponent: React.FC = () => {
                             type={confirmShowPassword ? "text" : "password"}
                             value={confirmPassword}
                             onChange={handleConfirmPasswordChange}
+                            error={confirmPasswordError}
                             InputProps={{
                                 endAdornment: (
                                     <IconButton
@@ -171,18 +187,27 @@ export const SignupComponent: React.FC = () => {
                 open={snackbarOpen}
                 autoHideDuration={4000}
                 onClose={handleCloseSnackbar}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center'
+                }}
             >
                 <SnackbarContent
                     sx={{
                         backgroundColor: "#100F10",
                         alignItems: 'center',
+                        justifyContent: 'center'
                     }}
                     message={
                         <Box
                             display="flex"
                             alignItems="center"
                         >
-                            <Info sx={{ marginRight: "8px" }} />
+                            <Info
+                                sx={{
+                                    marginRight: "8px"
+                                }}
+                            />
                             <span>Preencha todos os campos.</span>
                         </Box>
                     }

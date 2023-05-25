@@ -15,20 +15,26 @@ export const SigninComponent: React.FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [usernameError, setUsernameError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
         setSnackbarOpen(false);
+        setUsernameError(false);
     };
 
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
         setSnackbarOpen(false);
+        setPasswordError(false);
     };
 
     const handleSignin = () => {
         if (username.trim() === "" || password.trim() === "") {
             setSnackbarOpen(true);
+            setUsernameError(username.trim() === "");
+            setPasswordError(password.trim() === "");
         } else {
             // Fazer a lógica de autenticação aqui
             window.location.href = "/umidade";
@@ -44,7 +50,12 @@ export const SigninComponent: React.FC = () => {
             <BoxComponent>
                 <LogoComponent logo={Logo} />
                 <TitleComponent title="Login" />
-                <InputComponent title="Usuário" value={username} onChange={handleUsernameChange} />
+                <InputComponent
+                    title="Usuário"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    error={usernameError}
+                />
                 <InputComponent
                     title="Senha"
                     type={showPassword ? "text" : "password"}
@@ -61,11 +72,9 @@ export const SigninComponent: React.FC = () => {
                             </IconButton>
                         ),
                     }}
+                    error={passwordError}
                 />
-                <ButtonComponent
-                    title="Entrar"
-                    onClick={handleSignin}
-                />
+                <ButtonComponent title="Entrar" onClick={handleSignin} />
                 <Box
                     sx={{
                         display: "grid",
@@ -91,18 +100,27 @@ export const SigninComponent: React.FC = () => {
                 open={snackbarOpen}
                 autoHideDuration={4000}
                 onClose={handleCloseSnackbar}
-            >
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center'
+                    }}
+                >
                 <SnackbarContent
                     sx={{
                         backgroundColor: "#100F10",
                         alignItems: 'center',
+                        justifyContent: 'center'
                     }}
                     message={
                         <Box
                             display="flex"
                             alignItems="center"
                         >
-                            <Info sx={{ marginRight: "8px" }} />
+                            <Info
+                                sx={{
+                                    marginRight: "8px"
+                                }}
+                            />
                             <span>Preencha todos os campos.</span>
                         </Box>
                     }
@@ -110,4 +128,4 @@ export const SigninComponent: React.FC = () => {
             </Snackbar>
         </>
     );
-}
+};
