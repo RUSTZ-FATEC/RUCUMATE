@@ -1,32 +1,54 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const morgan = require("morgan");
+const helmet = require("helmet");
+const userRoutes = require("./routes/userRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
+const espRoutes = require("./routes/espRouters");
+const valveRoutes = require("./routes/valveRoutes");
 const app = express();
-const authMiddleware = require("./middleware/authMiddleware");
-
-// Logger
-
-app.use(morgan("dev"));
 
 // Middleware
 
-app.use(authMiddleware);
+app.use(morgan('dev'));
+
+app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+
+// Server Status
+
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "Server is running"
+    });
+});
 
 // Routers
 
-app.use("/user", require("./routes/userRoutes"));
-app.use("/notification", require("./routes/notificationRoutes"));
-app.use("/esp", require("./routes/espRouters"));
-app.use("/valve", require("./routes/valveRoutes"));
+app.use("/user", userRoutes);
+app.use("/notification", notificationRoutes);
+app.use("/esp", espRoutes);
+// app.use("/valve", valveRoutes);
 
 app.use((req, res, next) => {
     const error = new Error("Not found");
     error.status = 404;
-    next(error);
+    next();
 });
 
 module.exports = app;

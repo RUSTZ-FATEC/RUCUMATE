@@ -1,9 +1,7 @@
-require("dotenv-safe").config();
-const app = require("./app");
-
-const http = require("http");
+const http = require('http');
+const app = require('./app');
+const port = process.env.PORT || 3000;
 const server = http.createServer(app);
-
-server.listen(process.env.PORT || 3001, () => {
-    console.log("Server is running on port 3000");
+server.listen(port, () => {
+    console.log("Server is running!")
 });
