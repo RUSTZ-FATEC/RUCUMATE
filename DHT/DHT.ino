@@ -1,24 +1,24 @@
 #include <DHT.h>
 
-#define DHTPIN 2          // Define o pino ao qual o sensor DHT11 está conectado (Pino D4)
-#define DHTTYPE DHT11     // Define o tipo de sensor DHT11
-DHT dht(DHTPIN, DHTTYPE); // Cria um objeto DHT
+#define DHTPIN 2          // D4
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
-  Serial.begin(115200);   // Inicializa a comunicação serial com a velocidade de 9600 baud
-  dht.begin();            // Inicializa o sensor DHT11
+  Serial.begin(115200);
+  dht.begin();
 }
 
 void loop() {
-  float h = dht.readHumidity();      // Lê a umidade relativa do ar em porcentagem
-  float t = dht.readTemperature();  // Lê a temperatura em graus Celsius
+  float humidity = dht.readHumidity();
+  float temperature = dht.readTemperature();
 
   Serial.print("Umidade: ");
-  Serial.print(h);
+  Serial.print(humidity);
   Serial.print("% - ");
   Serial.print("Temperatura: ");
-  Serial.print(t);
+  Serial.print(temperature);
   Serial.println("°C");
-  
-  delay(2000);  // Espera 2 segundos antes de fazer a próxima leitura
+
+  delay(2000);
 }

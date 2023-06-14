@@ -2,9 +2,8 @@
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
 
-// Wi-Fi Credentials
-const char* ssid = "Silvia-BW";
-const char* password = "casa4539";
+const char* ssid = "-";
+const char* password = "-";
 
 int port_number = 443;
 BearSSL::WiFiClientSecure client;
@@ -19,48 +18,45 @@ void setup() {
 }
 
 void loop() {
-  //Check WiFi connection status
   if (WiFi.status() == WL_CONNECTED) {
-    Serial.println("\n\nPerforming HTTP GET Request\n");
+    Serial.println("\n\nRealizando Requisição HTTP GET\n");
 
-    // HTTP Details
     String requestUrl = "https://rucumate.herokuapp.com/";
     https.begin(client, requestUrl);
 
-    // Send HTTP GET request
     int httpResponseCode = https.GET();
-    Serial.print("HTTP Response code: ");
+    Serial.print("Código de Resposta HTTP: ");
     Serial.println(httpResponseCode);
 
     if (httpResponseCode == HTTP_CODE_OK) {
       String payload = https.getString();
-      Serial.println("Response payload: " + payload);
+      Serial.println("Carga de Resposta: " + payload);
 
       DynamicJsonDocument doc(1024);
       deserializeJson(doc, payload);
       JsonObject obj = doc.as<JsonObject>();
 
-      String value = obj[String("title")];
-      Serial.println("\nresponse is : " + value);
+      String value = obj[String("message")];
+      Serial.println("\nA resposta é: " + value);
     }
     else {
-      Serial.print("Error code: ");
+      Serial.print("Código de Erro: ");
       Serial.println(httpResponseCode);
     }
-    // Free resources
+    // Liberar recursos
     https.end();
 
   } else {
-    Serial.println("WiFi Disconnected");
+    Serial.println("WiFi Desconectado");
   }
   delay(10000);
 }
 
 void setup_wifi() {
   delay(10);
-  // We start by connecting to a WiFi network
+  // Conectando a rede WiFi
   Serial.println();
-  Serial.print("Connecting to ");
+  Serial.print("Conectando a ");
   Serial.println(ssid);
 
   WiFi.begin(ssid, password);
@@ -71,7 +67,7 @@ void setup_wifi() {
   }
 
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("WiFi conectado");
+  Serial.println("Endereço IP: ");
   Serial.println(WiFi.localIP());
 }
