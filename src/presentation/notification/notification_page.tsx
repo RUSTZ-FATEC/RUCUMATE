@@ -18,14 +18,14 @@ export const NotificationComponent: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const user_id = localStorage.getItem('user_id'); // Obter o user_id armazenado localmente
+                const user_id = localStorage.getItem('user_id');
                 const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
                 const data = await response.json();
 
-                const newNotifications = [];
+                const newNotifications: any = [];
 
                 // Check temperature and humidity fields
-                data.forEach(async (entry) => {
+                data.forEach(async (entry: any) => {
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
                             const content = `O sensor ${entry.id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
@@ -69,7 +69,7 @@ export const NotificationComponent: React.FC = () => {
         fetchData();
     }, []);
 
-    const sendNotification = async (content, user_id) => {
+    const sendNotification = async (content: string, user_id: any) => {
         try {
             await fetch('https://rucumate.herokuapp.com/notification/generate', {
                 method: 'POST',

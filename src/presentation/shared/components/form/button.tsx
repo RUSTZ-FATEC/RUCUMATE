@@ -6,7 +6,7 @@ import { IconButton, Snackbar, SnackbarContent } from "@mui/material";
 import { Info, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
 
-function ButtonComponent(props: any) {
+function ButtonComponent(props: any): any {
     const theme = createTheme({
         palette: {
             primary: {
@@ -119,19 +119,7 @@ function ButtonComponent(props: any) {
 
         } else if (props.title === "Atualizar") {
 
-            const url = "https://rucumate.herokuapp.com/user/update";
-
-            const config = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    "username": username,
-                    "email": email,
-                    "passwd": password
-                })
-            };
+            window.alert("Manuentção em andamento")
 
         }
     };

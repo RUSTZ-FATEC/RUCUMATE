@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
 const GraphicComponent = () => {
@@ -14,19 +14,19 @@ const GraphicComponent = () => {
         if (endpoint.endsWith('temperatura')) {
           const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
           const data = await response.json();
-          seriesData = data.map((entry) => entry.temperature);
+          seriesData = data.map((entry: any) => entry.temperature);
         } else if (endpoint.endsWith('umidade')) {
           const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
           const data = await response.json();
-          seriesData = data.map((entry) => entry.humidity);
+          seriesData = data.map((entry: any) => entry.humidity);
         }
 
         if (chartRef.current) {
           const chart = echarts.init(chartRef.current);
 
-          const xAxisData = []; // Defina os dados apropriados para o eixo x
+          const xAxisData: [] = []; // Defina os dados apropriados para o eixo x
 
-          const option = {
+          const option: any = {
             xAxis: {
               type: 'category',
               data: xAxisData,

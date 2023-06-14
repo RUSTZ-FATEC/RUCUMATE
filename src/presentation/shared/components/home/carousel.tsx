@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { carouselModel } from "./carousel.model";
 
-function CarouselComponent(props) {
+function CarouselComponent(props: any): any {
     const [slides, setSlides] = useState([]);
     const user_id = window.localStorage.getItem("user_id");
 
@@ -22,7 +23,7 @@ function CarouselComponent(props) {
         fetchData();
     }, [user_id]);
 
-    const getModelInfo = (slide) => {
+    const getModelInfo = (slide: carouselModel) => {
         if (props.title === "Informações de temperatura dos sensores:") {
             return slide.temperature;
         } else if (props.title === "Informações de umidade dos sensores:") {
@@ -50,7 +51,7 @@ function CarouselComponent(props) {
                     }
                 }}
             >
-                {slides.map((slide) => (
+                {slides.map((slide: carouselModel) => (
                     <SwiperSlide key={slide.id}>
                         <span>
                             <strong>ID:</strong>

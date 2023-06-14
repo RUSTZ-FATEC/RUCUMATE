@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IconButton, Drawer } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 
 function NavComponent(props: any) {
     const [isOpen, setIsOpen] = useState(false);
-    const [hasNotifications, setHasNotifications] = useState(false);
     
     const handleDrawerToggle = () => {
         setIsOpen(!isOpen);
@@ -65,7 +64,6 @@ function NavComponent(props: any) {
                         <img
                             src={props.icon2}
                             alt="..."
-                            className={`nav-icon ${hasNotifications ? 'has-notifications' : ''}`}
                         />
                     </a>
                     <a href={props.navicon3}>
