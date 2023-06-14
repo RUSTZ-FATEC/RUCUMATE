@@ -29,8 +29,7 @@ export const SigninComponent: React.FC = () => {
                 }
                 {
                     <ButtonComponent
-                        title={buttonTitle}
-                    />
+                        title={buttonTitle} type={''} InputProps={undefined} value={''} onChange={undefined} error={false}                    />
                 }
                 <Box
                     sx={{

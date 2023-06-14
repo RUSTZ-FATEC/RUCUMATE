@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NavComponent from '../shared/components/home/nav';
 import GraphicComponent from '../shared/components/home/graphic';
-import CarouselComponent from '../shared/components/home/carousel';
+// import CarouselComponent from '../shared/components/home/carousel';
 
 import Logo from '../../assets/images/logo.svg';
 import MoistureIcon from '../../assets/images/icons/moisture.svg';
@@ -27,9 +27,9 @@ export const TemperatureComponent: React.FC = () => {
                 logout={LogoutIcon}
             />
             <GraphicComponent />
-            <CarouselComponent
+            {/* <CarouselComponent
                 title='Informações de temperatura dos sensores:'
-            />
+            /> */}
         </>
     );
 }

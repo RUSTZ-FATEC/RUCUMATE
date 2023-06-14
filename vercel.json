@@ -1,0 +1,5 @@
+{
+  "build": {
+    "chunkSizeWarningLimit": 198200
+  }
+}

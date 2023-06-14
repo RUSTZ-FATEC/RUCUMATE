@@ -2,7 +2,16 @@ import TextField from '@mui/material/TextField';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function InputComponent(props: any) {
+export interface InputComponentProps {
+    title: string;
+    type: string;
+    InputProps: any;
+    value: string;
+    onChange: any;
+    error: boolean;
+}
+
+function InputComponent(props: InputComponentProps) {
     const theme = createTheme({
         palette: {
             primary: {
@@ -22,7 +31,6 @@ function InputComponent(props: any) {
                     value={props.value}
                     onChange={props.onChange}
                     error={props.error}
-                    helperText={props.helperText}
                     id="fullWidth"
                     variant="standard"
                     sx={{

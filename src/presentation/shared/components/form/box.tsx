@@ -1,6 +1,10 @@
 import Box from '@mui/material/Box';
 
-function BoxComponent(props: any) {
+interface BoxComponentProps {
+    children: any;
+}
+
+function BoxComponent(props: BoxComponentProps) {
     return (
         <>
             <Box sx={{
