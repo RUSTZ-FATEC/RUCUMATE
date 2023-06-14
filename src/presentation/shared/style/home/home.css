@@ -1,5 +1,19 @@
-.nav-icon {
+svg {
     margin: 10px;
+    height: 32px;
+    fill: #D6E1E0;
+}
+
+a {
+    display: grid;
+    place-items: center;
+}
+
+a:hover {
+    width: 50px;
+    border-radius: 100%;
+    background-color: #00960A;
+    transition: all .3s ease-in-out;
 }
 
 .title-carousel {
