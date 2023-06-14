@@ -25,8 +25,7 @@ export const ProfileComponent: React.FC = () => {
                 }
                 {
                     <ButtonComponent
-                        title="Atualizar"
-                    />
+                        title="Atualizar" type={''} InputProps={undefined} value={''} onChange={undefined} error={false}                    />
                 }
             </BoxComponent>
         </>

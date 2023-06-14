@@ -25,8 +25,7 @@ export const SignupComponent: React.FC = () => {
                 }
                 {
                     <ButtonComponent
-                        title="Cadastrar"
-                    />
+                        title="Cadastrar" type={''} InputProps={undefined} value={''} onChange={undefined} error={false} />
                 }
                 <Box
                     sx={{

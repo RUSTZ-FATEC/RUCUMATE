@@ -1,12 +1,12 @@
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import InputComponent from './input';
+import InputComponent, { InputComponentProps } from './input';
 import Box from '@mui/material/Box';
 import { IconButton, Snackbar, SnackbarContent } from "@mui/material";
 import { Info, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
 
-function ButtonComponent(props: any): any {
+function ButtonComponent(props: InputComponentProps): any {
     const theme = createTheme({
         palette: {
             primary: {
@@ -112,7 +112,7 @@ function ButtonComponent(props: any): any {
                     .then((data) => {
                         if (data.message === "Authentication successful") {
                             window.localStorage.setItem("user_id", data.user.id)
-                            window.location.href = "/umidade";
+                            window.location.href = "umidade";
                         }
                     });
             }
@@ -133,6 +133,7 @@ function ButtonComponent(props: any): any {
                     <InputComponent
                         title="Email"
                         type="text"
+                        InputProps=''
                         value={email}
                         onChange={handleEmailChange}
                         error={emailError}
@@ -214,6 +215,7 @@ function ButtonComponent(props: any): any {
                     <InputComponent
                         title="Usuario"
                         type="text"
+                        InputProps=''
                         value={username}
                         onChange={handleUsernameChange}
                         error={usernameError}
@@ -221,6 +223,7 @@ function ButtonComponent(props: any): any {
                     <InputComponent
                         title="Email"
                         type="text"
+                        InputProps=''
                         value={email}
                         onChange={handleEmailChange}
                         error={emailError}
@@ -341,6 +344,7 @@ function ButtonComponent(props: any): any {
                     <InputComponent
                         title="Usuario"
                         type="text"
+                        InputProps=''
                         value={username}
                         onChange={handleUsernameChange}
                         error={usernameError}
@@ -348,6 +352,7 @@ function ButtonComponent(props: any): any {
                     <InputComponent
                         title="Email"
                         type="text"
+                        InputProps=''
                         value={email}
                         onChange={handleEmailChange}
                         error={emailError}
