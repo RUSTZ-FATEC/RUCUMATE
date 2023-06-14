@@ -3,8 +3,8 @@
 #include <ArduinoJson.h>
 
 // Wi-Fi Credentials
-const char* ssid = "--";
-const char* password = "--";
+const char* ssid = "Silvia-BW";
+const char* password = "casa4539";
 
 int port_number = 443;
 BearSSL::WiFiClientSecure client;
@@ -24,7 +24,7 @@ void loop() {
     Serial.println("\n\nPerforming HTTP GET Request\n");
 
     // HTTP Details
-    String requestUrl = "https://jsonplaceholder.typicode.com/posts/1";
+    String requestUrl = "https://rucumate.herokuapp.com/";
     https.begin(client, requestUrl);
 
     // Send HTTP GET request
