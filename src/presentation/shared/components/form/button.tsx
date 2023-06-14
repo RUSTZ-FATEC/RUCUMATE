@@ -58,7 +58,6 @@ function ButtonComponent(props: InputComponentProps): any {
 
     const handleClick = () => {
         if (props.title === "Cadastrar") {
-
             if (username.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
                 setSnackbarOpen(true);
                 setUsernameError(username.trim() === "");
@@ -87,7 +86,6 @@ function ButtonComponent(props: InputComponentProps): any {
                         }
                     });
             }
-
         } else if (props.title === "Entrar") {
             if (email.trim() === "" || password.trim() === "") {
                 setEmailError(email.trim() === "");

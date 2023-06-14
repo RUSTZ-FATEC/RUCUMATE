@@ -4,12 +4,12 @@ svg {
     fill: #D6E1E0;
 }
 
-a {
+.link {
     display: grid;
     place-items: center;
 }
 
-a:hover {
+.link:hover {
     width: 50px;
     border-radius: 100%;
     background-color: #00960A;
@@ -22,41 +22,10 @@ a:hover {
     color: #D6E1E0;
 }
 
-.swiper {
-    width: 100%;
-    max-width: 600px;
-}
-
-.swiper-slide {
-    border-radius: 10px;
-    background-color: #100F10;
-    width: clamp(10vw, 10em, 100vw);
-    height: clamp(10vh, 6em, 100vh);
-}
-
-.swiper-slide {
-    display: grid;
-    place-items: start;
-    place-content: center;
-    grid-template-columns: auto;
-}
-
 span {
     gap: 5px;
     display: grid;
     grid-template-columns: auto auto;
     font-size: 14px;
     color: #D6E1E0;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    color: #00960A;
-}
-
-@media screen and (max-width: 768px) {
-    .swiper {
-        width: 100%;
-        max-width: 300px;
-    }
 }
