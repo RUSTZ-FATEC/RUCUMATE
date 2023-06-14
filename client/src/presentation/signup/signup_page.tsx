@@ -46,7 +46,7 @@ export const SignupComponent: React.FC = () => {
                         <AccountComponent
                             title="Já possui uma conta cadastrada?"
                             title_link="Login"
-                            href="/login"
+                            href="/"
                         />
                     }
                 </Box>

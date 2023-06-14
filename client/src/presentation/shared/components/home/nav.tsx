@@ -18,6 +18,7 @@ function NavComponent(props: any) {
                 aria-label="menu"
                 edge="start"
                 onClick={handleDrawerToggle}
+                disableRipple
                 sx={{ position: 'fixed', top: '0', left: '15px', zIndex: 999, color: '#D6E1E0' }}
             >
                 <Menu />
@@ -92,7 +93,7 @@ function NavComponent(props: any) {
                         }}
                         onClick={() => {
                             window.localStorage.clear();
-                            window.location.href = "/login";
+                            window.location.href = "/";
                         }}
                     >
                         <img

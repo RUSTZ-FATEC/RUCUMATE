@@ -12,11 +12,11 @@ const GraphicComponent = () => {
         const user_id = localStorage.getItem('user_id'); // Obter o user_id armazenado localmente
 
         if (endpoint.endsWith('temperatura')) {
-          const response = await fetch(`http://localhost:3002/esp/data/id/user/${user_id}`);
+          const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
           const data = await response.json();
           seriesData = data.map((entry) => entry.temperature);
         } else if (endpoint.endsWith('umidade')) {
-          const response = await fetch(`http://localhost:3002/esp/data/id/user/${user_id}`);
+          const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
           const data = await response.json();
           seriesData = data.map((entry) => entry.humidity);
         }

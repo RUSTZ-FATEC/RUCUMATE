@@ -19,7 +19,7 @@ export const NotificationComponent: React.FC = () => {
         const fetchData = async () => {
             try {
                 const user_id = localStorage.getItem('user_id'); // Obter o user_id armazenado localmente
-                const response = await fetch(`http://localhost:3002/esp/data/id/user/${user_id}`);
+                const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
                 const data = await response.json();
 
                 const newNotifications = [];
@@ -28,12 +28,12 @@ export const NotificationComponent: React.FC = () => {
                 data.forEach(async (entry) => {
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
-                            const content = `O sensor ${entry.id} detectou que a temperatura está no limite máximo suportado pela planta (${entry.temperature}°C)!`;
+                            const content = `O sensor ${entry.id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
                             newNotifications.push(content);
 
                             await sendNotification(content, user_id);
                         } else {
-                            const content = `O sensor ${entry.id} detectou que a temperatura está ficando alta (${entry.temperature}°C)!`;
+                            const content = `O sensor ${entry.id} detectou que a temperatura está ficando alta ${entry.temperature}°C!`;
                             newNotifications.push(content);
 
                             await sendNotification(content, user_id);
@@ -41,19 +41,19 @@ export const NotificationComponent: React.FC = () => {
                     }
 
                     if (entry.temperature < 16) {
-                        const content = `O sensor ${entry.id} detectou que a temperatura está abaixo da mínima necessária para o desenvolvimento com a planta (${entry.temperature}°C).`;
+                        const content = `O sensor ${entry.id} detectou que a temperatura está abaixo da mínima necessária para o desenvolvimento com a planta ${entry.temperature}°C.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
                     }
 
                     if (entry.humidity < 20) {
-                        const content = `O sensor ${entry.id} detectou que a umidade está baixa (${entry.humidity}%).`;
+                        const content = `O sensor ${entry.id} detectou que a umidade está baixa ${entry.humidity}%.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
                     } else if (entry.humidity > 60) {
-                        const content = `O sensor ${entry.id} detectou que a umidade está muito alta (${entry.humidity}%).`;
+                        const content = `O sensor ${entry.id} detectou que a umidade está muito alta ${entry.humidity}%.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
@@ -71,7 +71,7 @@ export const NotificationComponent: React.FC = () => {
 
     const sendNotification = async (content, user_id) => {
         try {
-            await fetch('http://localhost:3002/notification/generate', {
+            await fetch('https://rucumate.herokuapp.com/notification/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
