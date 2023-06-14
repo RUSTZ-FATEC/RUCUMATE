@@ -49,7 +49,7 @@ export const SigninComponent: React.FC = () => {
                         <AccountComponent
                             title="Não possui uma conta de acesso?"
                             title_link="Cadastrar"
-                            href="/cadastro"
+                            href="cadastro"
                         />
                     }
                 </Box>

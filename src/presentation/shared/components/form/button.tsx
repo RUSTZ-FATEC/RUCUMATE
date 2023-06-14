@@ -112,7 +112,7 @@ function ButtonComponent(props: InputComponentProps): any {
                     .then((data) => {
                         if (data.message === "Authentication successful") {
                             window.localStorage.setItem("user_id", data.user.id)
-                            window.location.href = "/umidade";
+                            window.location.href = "umidade";
                         }
                     });
             }
