@@ -1,0 +1,10 @@
+# Redirects
+/assets/*          /dist/assets/:splat
+/:route            /dist/index.html
+
+# Rewrites
+/cadastro          /dist/index.html
+/umidade           /dist/index.html
+/temperatura       /dist/index.html
+/notificacao       /dist/index.html
+/perfil            /dist/index.html
