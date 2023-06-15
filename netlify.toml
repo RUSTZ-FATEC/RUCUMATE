@@ -1,10 +1,9 @@
-# Redirects
-/assets/*          /dist/assets/:splat
-/:route            /dist/index.html
+[[redirects]]
+  from = "/assets/*"
+  to = "/dist/assets/:splat"
+  status = 200
 
-# Rewrites
-/cadastro          /dist/index.html
-/umidade           /dist/index.html
-/temperatura       /dist/index.html
-/notificacao       /dist/index.html
-/perfil            /dist/index.html
+[[redirects]]
+  from = "/*"
+  to = "/dist/index.html"
+  status = 200
