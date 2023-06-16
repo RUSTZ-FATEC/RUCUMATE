@@ -11,7 +11,6 @@
         "sequelize": "^6.31.1"
     },
     "devDependencies": {
-        "morgan": "^1.10.0",
         "nodemon": "^2.0.22"
     },
     "scripts": {
