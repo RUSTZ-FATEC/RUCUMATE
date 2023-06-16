@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const database = require("../../db");
 const User = require("../../models/userModel");
+const generateToken = require("../../utils/generateToken");
 
 app.post("/", async (req, res) => {
     const { email, passwd } = req.body;
@@ -13,8 +14,6 @@ app.post("/", async (req, res) => {
     }
 
     try {
-
-        database.sync();
         
         const user = await User.findOne({
             where: {
@@ -30,9 +29,10 @@ app.post("/", async (req, res) => {
             });
         }
         
+        const token = generateToken(email);
         res.status(200).json({
             message: "Authentication successful",
-            user: user
+            token: token
         });
 
     } catch (error) {

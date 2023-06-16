@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const database = require("../../db");
 const ClimateData = require("../../models/climateDataModel");
+const authenticate = require("../../middleware/authMiddleware");
 
-app.post("/", async (req, res, next) => {
+app.post("/", authenticate, async (req, res, next) => {
     const {
         sensor_id,
-        sensor_date,
         temperature,
         humidity,
         user_id,
@@ -14,23 +14,19 @@ app.post("/", async (req, res, next) => {
 
     if (
         !sensor_id ||
-        !sensor_date ||
         !temperature ||
         !humidity ||
         !user_id
     ) {
         return res.status(400).json({
-            msg: "Bad Request: sensor_id, sensor_date, temperature, humidity, user_id are required!",
+            msg: "Bad Request: sensor_id, temperature, humidity, user_id are required!",
         });
     }
 
     try {
-
-        database.sync();
         
         const data = await ClimateData.create({
             sensor_id,
-            sensor_date,
             temperature,
             humidity,
             user_id,

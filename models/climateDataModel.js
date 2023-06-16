@@ -11,12 +11,7 @@ const ClimateData = database.define('climate_data', {
     },
     
     sensor_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
-    
-    sensor_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     
@@ -39,6 +34,6 @@ const ClimateData = database.define('climate_data', {
     },
 });
 
-database.sync({ force: false });
+ClimateData.sync();
 
 module.exports = ClimateData;

@@ -9,8 +9,6 @@ app.get("/", async (req, res) => {
     
     try {
 
-        database.sync();
-
         if (!user_id) {
             res.status(400).json({
                 message: "user_id is required"

@@ -5,17 +5,15 @@ const User = require("../../models/userModel");
 
 app.post("/", async (req, res) => {
 
-    const { username, passwd, email } = req.body;
+    const { passwd, email } = req.body;
 
-    if (!username || !passwd || !email) {
+    if ( !passwd || !email ) {
         return res.status(400).json({
-            message: "Bad request - username, passwd and email are required"
+            message: "Bad request - passwd and email are required"
         });
     }
 
     try {
-
-        database.sync();
         
         const findEmail = await User.findOne({
             where: {
@@ -30,7 +28,6 @@ app.post("/", async (req, res) => {
         }
         
         const createUser = await User.create({
-            username: username,
             passwd: passwd,
             email: email
         });

@@ -17,8 +17,6 @@ app.get("/id/sensor/:sensor_id", async (req, res) => {
 
         } else {
 
-            database.sync();
-
             const data = await ClimateData.findAll({
                 where: {
                     sensor_id: sensor_id,

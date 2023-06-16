@@ -6,9 +6,7 @@ const ClimateData = require("../../models/climateDataModel");
 app.get("/", async (req, res) => {
 
     try {
-    
-        database.sync();
-        
+            
         const result = await ClimateData.findAll();
         
         if (result.length === 0 || result === "undefined") {

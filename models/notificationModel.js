@@ -25,6 +25,6 @@ const notification = database.define('notification', {
     },
 });
 
-database.sync({ force: false });
+notification.sync();
 
 module.exports = notification;

@@ -12,7 +12,6 @@ app.post("/generate", async (req, res) => {
                 message: "user_id and content are required"
             });
         } else {
-            database.sync();
 
             const existingNotification = await Notification.findOne({
                 where: { content: content }

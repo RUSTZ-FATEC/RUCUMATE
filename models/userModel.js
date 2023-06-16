@@ -8,10 +8,6 @@ const User = database.define('users', {
         autoIncrement: true,
         primaryKey: true
     },
-    username: {
-        type: Sequelize.STRING(80),
-        allowNull: false,
-    },
     passwd: {
         type: Sequelize.STRING(120),
         allowNull: false
@@ -20,6 +16,10 @@ const User = database.define('users', {
         type: Sequelize.STRING(80),
         allowNull: false,
         unique: true
+    },
+    token: {
+        type: Sequelize.STRING(120),
+        allowNull: true
     },
     createdAt: {
         type: Sequelize.DATE,
@@ -33,6 +33,6 @@ const User = database.define('users', {
     }
 });
 
-database.sync({ force: false });
+User.sync();
 
 module.exports = User;
