@@ -49,15 +49,16 @@ export const MoistureComponent: React.FC = () => {
                 if (chartRef.current) {
                     const chart = echarts.init(chartRef.current);
 
-                    const xAxisData: [] = []; // Defina os dados apropriados para o eixo x
-
                     const option: any = {
                         xAxis: {
                             type: 'category',
-                            data: xAxisData,
+                            data: seriesData,
                         },
                         yAxis: {
                             type: 'value',
+                            axisLabel: {
+                                formatter: '{value} %'
+                            }
                         },
                         series: [
                             {
@@ -72,17 +73,18 @@ export const MoistureComponent: React.FC = () => {
                                 },
                             },
                             {
-                                name: 'Linha Pontilhada',
+                                data: seriesData,
                                 type: 'line',
                                 symbol: 'none',
                                 lineStyle: {
-                                    type: 'dashed',
-                                    color: 'red',
+                                    // type: 'dashed',
+                                    color: '#00960A',
+                                    smooth: true
                                 },
                                 markLine: {
                                     data: [
-                                        { yAxis: 20, lineStyle: { color: 'red' } }, // Valor mínimo (inferior)
-                                        { yAxis: 60, lineStyle: { color: 'red' } }, // Valor máximo (superior)
+                                        { yAxis: 20, lineStyle: { color: '#00960A' } }, // Valor mínimo (inferior)
+                                        { yAxis: 90, lineStyle: { color: '#00960A' } }, // Valor máximo (superior)
                                     ],
                                 },
                             },
@@ -95,8 +97,8 @@ export const MoistureComponent: React.FC = () => {
                     // Verificar se é temperatura e ajustar os valores da linha pontilhada
                     if (endpoint.endsWith('temperatura')) {
                         option.series[1].markLine.data = [
-                            { yAxis: 16, lineStyle: { color: 'red' } }, // Valor mínimo (inferior)
-                            { yAxis: 34, lineStyle: { color: 'red' } }, // Valor máximo (superior)
+                            { yAxis: 0, lineStyle: { color: '#00960A' } }, // Valor mínimo (inferior)
+                            { yAxis: 40, lineStyle: { color: '#00960A' } }, // Valor máximo (superior)
                         ];
                     }
 
@@ -199,7 +201,18 @@ export const MoistureComponent: React.FC = () => {
                 {slides.length > 0 ? (
                     <div ref={chartRef} style={{ width: '100%', maxWidth: '700px', height: '400px' }} />
                 ) : (
-                    <div className="flex items-center justify-center text-center text-red-600 mt-5">Não há gráficos para exibir.</div>
+                    <div className="flex items-center justify-center rounded-xl bg-[#202124] gap-2 p-2 px-5 m-5">
+                        <div className='flex items-center justify-center rounded-full bg-[#404041] p-2'>
+                            <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <span className='text-white'>Não há dados relacionados à úmidade para exibir.</span>
+                        </div>
+                    </div>
                 )}
                 <div className='w-full h-28 overflow-auto'>
                     {slides.length > 0 ? (
