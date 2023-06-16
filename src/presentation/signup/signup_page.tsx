@@ -32,7 +32,7 @@ export const SignupComponent: React.FC = () => {
             return;
         }
 
-        const url = "https://rucumate.herokuapp.com/user/login";
+        const url = "https://rucumate.herokuapp.com/user/register";
 
         const config = {
             method: "POST",
