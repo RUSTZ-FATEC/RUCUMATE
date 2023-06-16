@@ -44,7 +44,7 @@ export const MoistureComponent: React.FC = () => {
                 } else if (endpoint.endsWith('umidade')) {
                     const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
                     const data = await response.json();
-                    seriesData = data.map((entry: any) => entry.umidade);
+                    seriesData = data.map((entry: any) => entry.humidity);
                 }
 
                 if (chartRef.current) {
