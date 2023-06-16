@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
-const database = require("../../db");
 const ClimateData = require("../../models/climateDataModel");
-const authenticate = require("../../middleware/authMiddleware");
 
 app.post("/", async (req, res, next) => {
     const {
