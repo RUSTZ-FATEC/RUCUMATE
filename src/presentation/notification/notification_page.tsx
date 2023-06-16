@@ -15,6 +15,7 @@ export const NotificationComponent: React.FC = () => {
     const [notifications, setNotifications] = useState<string[]>([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [previousTemperatures, setPreviousTemperatures] = useState<PreviousTemperatures>({});
+    const [previousNotifications, setPreviousNotifications] = useState<Record<string, Set<number>>>({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,13 +32,13 @@ export const NotificationComponent: React.FC = () => {
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
                             const content = `O sensor ${entry.sensor_id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
-                            if (entry.temperature !== previousTemperatures[entry.sensor_id]) {
+                            if (!previousNotifications[content] || !previousNotifications[content].has(entry.sensor_id)) {
                                 newNotifications.push(content);
                                 await sendNotification(content, user_id);
                             }
                         } else {
                             const content = `O sensor ${entry.sensor_id} detectou que a temperatura está ficando alta ${entry.temperature}°C!`;
-                            if (entry.temperature !== previousTemperatures[entry.sensor_id]) {
+                            if (!previousNotifications[content] || !previousNotifications[content].has(entry.sensor_id)) {
                                 newNotifications.push(content);
                                 await sendNotification(content, user_id);
                             }
@@ -46,7 +47,7 @@ export const NotificationComponent: React.FC = () => {
 
                     if (entry.temperature < 16) {
                         const content = `O sensor ${entry.sensor_id} detectou que a temperatura está abaixo da mínima necessária para o desenvolvimento com a planta ${entry.temperature}°C.`;
-                        if (entry.temperature !== previousTemperatures[entry.sensor_id]) {
+                        if (!previousNotifications[content] || !previousNotifications[content].has(entry.sensor_id)) {
                             newNotifications.push(content);
                             await sendNotification(content, user_id);
                         }
@@ -54,33 +55,48 @@ export const NotificationComponent: React.FC = () => {
 
                     if (entry.humidity < 20) {
                         const content = `O sensor ${entry.sensor_id} detectou que a umidade está baixa ${entry.humidity}%.`;
-                        newNotifications.push(content);
-                        await sendNotification(content, user_id);
+                        if (!previousNotifications[content] || !previousNotifications[content].has(entry.sensor_id)) {
+                            newNotifications.push(content);
+                            await sendNotification(content, user_id);
+                        }
                     } else if (entry.humidity > 60) {
                         const content = `O sensor ${entry.sensor_id} detectou que a umidade está muito alta ${entry.humidity}%.`;
-                        newNotifications.push(content);
-                        await sendNotification(content, user_id);
+                        if (!previousNotifications[content] || !previousNotifications[content].has(entry.sensor_id)) {
+                            newNotifications.push(content);
+                            await sendNotification(content, user_id);
+                        }
                     }
 
-                    // Update previous temperature for the sensor
+                    // Update previous temperature and notification for the sensor
                     setPreviousTemperatures((prevState) => ({
                         ...prevState,
                         [entry.sensor_id]: entry.temperature,
                     }));
+
+                    setPreviousNotifications((prevState) => {
+                        const updatedNotifications = { ...prevState };
+                        const sensorNotifications = updatedNotifications[content] || new Set<number>();
+                        sensorNotifications.add(entry.sensor_id);
+                        updatedNotifications[content] = sensorNotifications;
+                        return updatedNotifications;
+                    });
                 }
 
-                setNotifications(newNotifications);
+                setNotifications((prevNotifications) => [...prevNotifications, ...newNotifications]);
             } catch (error) {
                 console.log('Error fetching data:', error);
             }
         };
 
-        fetchData();
+        const intervalId = setInterval(fetchData, 60000); // Fetch data every minute
+        fetchData(); // Fetch data immediately
+
+        return () => clearInterval(intervalId); // Clean up interval on component unmount
     }, []);
 
-    const sendNotification = async (content: string, user_id: any) => {
+    const sendNotification = async (content: string, user_id: string) => {
         try {
-            await fetch('https://rucumate.herokuapp.com/notification/generate', {
+            await fetch('https://rucumate.herokuapp.com/notification', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
