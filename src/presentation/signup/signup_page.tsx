@@ -4,10 +4,15 @@ import Logo from "../../assets/images/logo.svg";
 
 export const SignupComponent: React.FC = () => {
 
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showModal, setShowModal] = useState(false);
+
+    const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(event.target.value);
+    };
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
@@ -35,18 +40,19 @@ export const SignupComponent: React.FC = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                "username": username,
                 "email": email,
                 "passwd": password
             })
         };
 
         fetch(url, config)
-        .then(() => {
-            window.location.href = "/login";
-        })
-        .catch(() => {
-            setShowModal(true);
-        });
+            .then(() => {
+                window.location.href = "/login";
+            })
+            .catch(() => {
+                setShowModal(true);
+            });
     }
 
     const closeModal = () => {
@@ -70,6 +76,21 @@ export const SignupComponent: React.FC = () => {
 
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                         <form className="space-y-6" action="#" method="POST">
+                            <div>
+                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">
+                                    Usuário
+                                </label>
+                                <div className="mt-2">
+                                    <input
+                                        value={username}
+                                        onChange={handleUsernameChange}
+                                        type="username"
+                                        required
+                                        className="block outline-none bg-[#202124] text-white w-full rounded-md border-0 py-1.5 px-3 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
+
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                                     E-mail

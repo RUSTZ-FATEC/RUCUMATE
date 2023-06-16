@@ -98,7 +98,7 @@ export const MoistureComponent: React.FC = () => {
                     if (endpoint.endsWith('temperatura')) {
                         option.series[1].markLine.data = [
                             { yAxis: 0, lineStyle: { color: '#00960A' } }, // Valor mínimo (inferior)
-                            { yAxis: 40, lineStyle: { color: '#00960A' } }, // Valor máximo (superior)
+                            { yAxis: 50, lineStyle: { color: '#00960A' } }, // Valor máximo (superior)
                         ];
                     }
 
