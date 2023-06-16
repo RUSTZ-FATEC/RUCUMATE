@@ -1,10 +1,5 @@
 const Sequelize = require('sequelize');
-
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: '.env.dev'});
-} else {
-    require('dotenv').config({ path: '.env.prod'});
-}
+require('dotenv-safe').config();
 
 const sequelzie = new Sequelize(
     process.env.DB_NAME,
