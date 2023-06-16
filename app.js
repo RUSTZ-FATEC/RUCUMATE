@@ -1,16 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const morgan = require("morgan");
 const helmet = require("helmet");
 const userRoutes = require("./routes/userRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const espRoutes = require("./routes/espRouters");
-const valveRoutes = require("./routes/valveRoutes");
 const app = express();
 
 // Middleware
-
-// app.use(morgan('dev'));
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,9 +39,6 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 app.use("/esp", espRoutes);
 app.use("/notification", notificationRoutes);
-
-// app.use("/valve", valveRoutes);
-
 app.use((req, res, next) => {
     const error = new Error("Not found");
     error.status = 404;
