@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const database = require("../../db");
 const ClimateData = require("../../models/climateDataModel");
 
 app.post("/", async (req, res, next) => {
@@ -22,9 +23,10 @@ app.post("/", async (req, res, next) => {
     }
 
     try {
-        
+
         const data = await ClimateData.create({
             sensor_id,
+            sensor_date,
             temperature,
             humidity,
             user_id,
