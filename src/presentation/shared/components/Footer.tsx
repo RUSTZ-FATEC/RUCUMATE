@@ -24,14 +24,15 @@ const Footer: React.FC = () => (
             </h4>
             <ul className="list-none mt-4">
               {footerlink.links.map((link, index) => (
-                <li
-                  key={link.name}
-                  className={`font-poppins font-normal text-[16px] leading-[24px] text-white transition-all duration-150 ease-in-out hover:text-[#00960A] cursor-pointer ${
-                    index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"
-                  }`}
-                >
-                  {link.name}
-                </li>
+                <>
+                  <li
+                    key={link.name}
+                    className={`font-poppins font-normal text-[16px] leading-[24px] text-white transition-all duration-150 ease-in-out hover:text-[#00960A] cursor-pointer ${index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"
+                      }`}
+                  >
+                    {link.name}
+                  </li>
+                </>
               ))}
             </ul>
           </div>

@@ -146,7 +146,7 @@ export const NotificationComponent: React.FC = () => {
             <div className='flex items-center justify-center mx-auto w-full max-w-7xl h-screen'>
                 <div className="flex flex-col items-center p-5">
                     <h1 className='text-white text-center font-bold text-2xl'>Notificações</h1>
-                    <div className='w-full h-60 overflow-auto'>
+                    <div className='w-full h-80 overflow-auto'>
                         {notifications.length > 0 ? (
                             <div className="w-full max-w-xl mt-5">
                                 {notifications.map((notification, index) => (

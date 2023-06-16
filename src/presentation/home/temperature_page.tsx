@@ -230,7 +230,7 @@ export const TemperatureComponent: React.FC = () => {
                     </div>
                 )}
                 <h1 className='font-semibold text-2xl text-white text-center m-2'>Informações e últimas atualizações</h1>
-                <div className='w-full h-36 overflow-auto'>
+                <div className='w-full h-72 overflow-auto'>
                     {slides.length > 0 ? (
                         slides.map((slide: ItemData) => (
                             <div className='flex flex-col bg-[#202124] text-white rounded-lg p-2.5 m-2.5'>

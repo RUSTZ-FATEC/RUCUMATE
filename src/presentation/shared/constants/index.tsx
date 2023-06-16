@@ -130,31 +130,6 @@ export const footerLinks = [
         ],
     },
     {
-        title: "Suporte",
-        links: [
-            {
-                name: "São Paulo",
-                link: "https://www.hoobank.com/help-center/",
-            },
-            {
-                name: "Minas gerais",
-                link: "https://www.hoobank.com/partners/",
-            },
-            {
-                name: "Santa Catarina",
-                link: "https://www.hoobank.com/suggestions/",
-            },
-            {
-                name: "Bahia",
-                link: "https://www.hoobank.com/blog/",
-            },
-            {
-                name: "Piaui",
-                link: "https://www.hoobank.com/newsletters/",
-            },
-        ],
-    },
-    {
         title: "Equipe",
         links: [
             {
