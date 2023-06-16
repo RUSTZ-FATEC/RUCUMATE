@@ -17,6 +17,8 @@ export const NotificationComponent: React.FC = () => {
                 const newNotifications: any = [];
 
                 data.forEach(async (entry: any) => {
+                    console.log(entry.temperature);
+                    console.log(entry.humidity);
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
                             const content = `O sensor ${entry.sensor_id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
