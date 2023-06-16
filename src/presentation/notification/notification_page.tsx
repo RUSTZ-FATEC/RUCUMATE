@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/images/logo.svg';
 
+interface SensorData {
+    temperature: number;
+    humidity: number;
+    sensor_id: number;
+}
+
+interface PreviousTemperatures {
+    [key: number]: number;
+}
+
 export const NotificationComponent: React.FC = () => {
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState<string[]>([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [previousTemperatures, setPreviousTemperatures] = useState({});
+    const [previousTemperatures, setPreviousTemperatures] = useState<PreviousTemperatures>({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -13,9 +23,9 @@ export const NotificationComponent: React.FC = () => {
                 const response = await fetch(
                     `https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`
                 );
-                const data = await response.json();
+                const data: SensorData[] = await response.json();
 
-                const newNotifications: any = [];
+                const newNotifications: string[] = [];
 
                 for (const entry of data) {
                     if (entry.temperature > 39) {
