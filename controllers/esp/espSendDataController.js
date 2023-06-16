@@ -4,7 +4,7 @@ const database = require("../../db");
 const ClimateData = require("../../models/climateDataModel");
 const authenticate = require("../../middleware/authMiddleware");
 
-app.post("/", authenticate, async (req, res, next) => {
+app.post("/", async (req, res, next) => {
     const {
         sensor_id,
         temperature,
