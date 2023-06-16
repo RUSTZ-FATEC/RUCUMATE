@@ -62,6 +62,7 @@ export const TemperatureComponent: React.FC = () => {
                         },
                         series: [
                             {
+                                name: "Informações em barras",
                                 data: seriesData,
                                 type: 'bar',
                                 showBackground: true,
@@ -73,6 +74,7 @@ export const TemperatureComponent: React.FC = () => {
                                 },
                             },
                             {
+                                name: "Informações em linhas",
                                 data: seriesData,
                                 type: 'line',
                                 symbol: 'none',

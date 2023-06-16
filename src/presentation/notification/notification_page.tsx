@@ -143,8 +143,15 @@ export const NotificationComponent: React.FC = () => {
                     {notifications.length > 0 ? (
                         <div className="w-full max-w-xl mt-5">
                             {notifications.map((notification, index) => (
-                                <div key={index} className="bg-[#202124] text-white text-center rounded-lg p-4 mb-2.5">
-                                    {notification}
+                                <div key={index} className="bg-[#202124] text-white text-justify rounded-lg p-4 mb-2.5">
+                                    <div className='flex flex-row items-center gap-5'>
+                                        <div>
+                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.6667 9.33333H9.33333V18.6667H18.6667V9.33333ZM15.5556 15.5556H12.4444V12.4444H15.5556V15.5556ZM28 12.4444V9.33333H24.8889V6.22222C24.8889 4.51111 23.4889 3.11111 21.7778 3.11111H18.6667V0H15.5556V3.11111H12.4444V0H9.33333V3.11111H6.22222C4.51111 3.11111 3.11111 4.51111 3.11111 6.22222V9.33333H0V12.4444H3.11111V15.5556H0V18.6667H3.11111V21.7778C3.11111 23.4889 4.51111 24.8889 6.22222 24.8889H9.33333V28H12.4444V24.8889H15.5556V28H18.6667V24.8889H21.7778C23.4889 24.8889 24.8889 23.4889 24.8889 21.7778V18.6667H28V15.5556H24.8889V12.4444H28ZM21.7778 21.7778H6.22222V6.22222H21.7778V21.7778Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                        {notification}
+                                    </div>
                                 </div>
                             ))}
                         </div>
