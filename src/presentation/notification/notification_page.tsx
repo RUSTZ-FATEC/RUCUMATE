@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/images/logo.svg';
 
+type PreviousTemperatures = {
+    [sensorId: string]: number;
+};
+
 export const NotificationComponent: React.FC = () => {
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState<string[]>([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [previousTemperatures, setPreviousTemperatures] = useState({});
+    const [previousTemperatures, setPreviousTemperatures] = useState<PreviousTemperatures>(
+        {}
+    );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -15,7 +21,7 @@ export const NotificationComponent: React.FC = () => {
                 );
                 const data = await response.json();
 
-                const newNotifications: any = [];
+                const newNotifications: string[] = [];
 
                 data.forEach(async (entry: any) => {
                     if (entry.temperature > 39) {
