@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const database = require("../../db");
 const User = require("../../models/userModel");
 const generateToken = require("../../utils/generateToken");
 
@@ -14,6 +13,8 @@ app.post("/", async (req, res) => {
     }
 
     try {
+        
+        User.sync();
         
         const user = await User.findOne({
             where: {

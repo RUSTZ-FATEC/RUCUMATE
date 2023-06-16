@@ -24,9 +24,10 @@ app.post("/", async (req, res, next) => {
 
     try {
 
+        ClimateData.sync();        
+        
         const data = await ClimateData.create({
             sensor_id,
-            sensor_date,
             temperature,
             humidity,
             user_id,

@@ -15,6 +15,8 @@ app.get("/id/user/:user_id", async (req, res) => {
             });
         } else {
 
+            ClimateData.sync();
+
             const data = await ClimateData.findAll({
                 where: {
                     user_id: user_id,

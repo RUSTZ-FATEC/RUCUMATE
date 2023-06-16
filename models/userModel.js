@@ -17,10 +17,6 @@ const User = database.define('users', {
         allowNull: false,
         unique: true
     },
-    token: {
-        type: Sequelize.STRING(120),
-        allowNull: true
-    },
     createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

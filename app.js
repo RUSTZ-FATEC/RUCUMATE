@@ -41,8 +41,9 @@ app.get("/", (req, res) => {
 // Routers
 
 app.use("/user", userRoutes);
-app.use("/notification", notificationRoutes);
 app.use("/esp", espRoutes);
+app.use("/notification", notificationRoutes);
+
 // app.use("/valve", valveRoutes);
 
 app.use((req, res, next) => {

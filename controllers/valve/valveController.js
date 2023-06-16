@@ -1,26 +1,26 @@
-const express = require("express");
-const app = express();
-const database = require("../../db");
-const Valve = require("../../models/valveModel");
+// const express = require("express");
+// const app = express();
+// const database = require("../../db");
+// const Valve = require("../../models/valveModel");
 
-app.get("/", async (req, res) => {
+// app.get("/", async (req, res) => {
 
-    try {
+//     try {
     
-        database.sync();
+//         database.sync();
         
-        const valves = await Valve.findAll();
+//         const valves = await Valve.findAll();
         
-        res.status(200).json({
-            valves
-        });
+//         res.status(200).json({
+//             valves
+//         });
         
-    } catch (error) {
-        res.status(500).json({
-            message: error
-        });
-    }
+//     } catch (error) {
+//         res.status(500).json({
+//             message: error
+//         });
+//     }
     
-});
+// });
 
-module.exports = app;
+// module.exports = app;
