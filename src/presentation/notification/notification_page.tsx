@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/images/logo.svg';
 
-type PreviousTemperatures = {
-    [sensorId: string]: number;
-};
-
 export const NotificationComponent: React.FC = () => {
-    const [notifications, setNotifications] = useState<string[]>([]);
+    const [notifications, setNotifications] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [previousTemperatures, setPreviousTemperatures] = useState<PreviousTemperatures>(
-        {}
-    );
+    const [previousTemperatures, setPreviousTemperatures] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,9 +15,9 @@ export const NotificationComponent: React.FC = () => {
                 );
                 const data = await response.json();
 
-                const newNotifications: string[] = [];
+                const newNotifications: any = [];
 
-                data.forEach(async (entry: any) => {
+                for (const entry of data) {
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
                             const content = `O sensor ${entry.sensor_id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
@@ -63,7 +57,7 @@ export const NotificationComponent: React.FC = () => {
                         ...prevState,
                         [entry.sensor_id]: entry.temperature,
                     }));
-                });
+                }
 
                 setNotifications(newNotifications);
             } catch (error) {
