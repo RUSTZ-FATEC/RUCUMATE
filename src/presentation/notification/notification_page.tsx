@@ -8,7 +8,7 @@ type PreviousTemperatures = {
 export const NotificationComponent: React.FC = () => {
     const [notifications, setNotifications] = useState<string[]>([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [previousTemperatures] = useState<PreviousTemperatures>({});
+    const [previousTemperatures, setPreviousTemperatures] = useState<PreviousTemperatures>({});
 
     useEffect(() => {
         const fetchData = async () => {
