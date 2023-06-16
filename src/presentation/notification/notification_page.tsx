@@ -19,12 +19,12 @@ export const NotificationComponent: React.FC = () => {
                 data.forEach(async (entry: any) => {
                     if (entry.temperature > 39) {
                         if (entry.temperature >= 49) {
-                            const content = `O sensor ${entry.id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
+                            const content = `O sensor ${entry.sensor_id} detectou que a temperatura está no limite máximo suportado pela planta ${entry.temperature}°C!`;
                             newNotifications.push(content);
 
                             await sendNotification(content, user_id);
                         } else {
-                            const content = `O sensor ${entry.id} detectou que a temperatura está ficando alta ${entry.temperature}°C!`;
+                            const content = `O sensor ${entry.sensor_id} detectou que a temperatura está ficando alta ${entry.temperature}°C!`;
                             newNotifications.push(content);
 
                             await sendNotification(content, user_id);
@@ -32,19 +32,19 @@ export const NotificationComponent: React.FC = () => {
                     }
 
                     if (entry.temperature < 16) {
-                        const content = `O sensor ${entry.id} detectou que a temperatura está abaixo da mínima necessária para o desenvolvimento com a planta ${entry.temperature}°C.`;
+                        const content = `O sensor ${entry.sensor_id} detectou que a temperatura está abaixo da mínima necessária para o desenvolvimento com a planta ${entry.temperature}°C.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
                     }
 
                     if (entry.humidity < 20) {
-                        const content = `O sensor ${entry.id} detectou que a umidade está baixa ${entry.humidity}%.`;
+                        const content = `O sensor ${entry.sensor_id} detectou que a umidade está baixa ${entry.humidity}%.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
                     } else if (entry.humidity > 60) {
-                        const content = `O sensor ${entry.id} detectou que a umidade está muito alta ${entry.humidity}%.`;
+                        const content = `O sensor ${entry.sensor_id} detectou que a umidade está muito alta ${entry.humidity}%.`;
                         newNotifications.push(content);
 
                         await sendNotification(content, user_id);
