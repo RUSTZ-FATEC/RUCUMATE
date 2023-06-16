@@ -13,6 +13,7 @@ export const MoistureComponent: React.FC = () => {
         user_id: string;
         temperature: string;
         humidity: string;
+        createdAt: Date;
     }
 
     const [slides, setSlides] = useState<ItemData[]>([]);
@@ -43,7 +44,7 @@ export const MoistureComponent: React.FC = () => {
                 } else if (endpoint.endsWith('umidade')) {
                     const response = await fetch(`https://rucumate.herokuapp.com/esp/data/id/user/${user_id}`);
                     const data = await response.json();
-                    seriesData = data.map((entry: any) => entry.humidity);
+                    seriesData = data.map((entry: any) => entry.umidade);
                 }
 
                 if (chartRef.current) {
@@ -135,13 +136,25 @@ export const MoistureComponent: React.FC = () => {
         }
     };
 
+    const getModelDate = (slide: any) => {
+        if (window.location.pathname === '/temperatura') {
+            const createdAt = new Date(slide.createdAt);
+            return createdAt.toLocaleString();
+        } else if (window.location.pathname === '/umidade') {
+            const createdAt = new Date(slide.createdAt);
+            return createdAt.toLocaleString();
+        } else {
+            return "Modelo não especificado";
+        }
+    };
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
     return (
         <>
-            <nav className="flex items-center justify-between mx-auto max-w-7xl p-3 absolute top-0 left-0 right-0 z-10">
+            <nav className="flex items-center justify-between mx-auto max-w-7xl p-3">
                 <div className="flex lg:flex-1">
                     <img className="h-8 w-auto" src={Logo} alt="..." />
                 </div>
@@ -199,7 +212,7 @@ export const MoistureComponent: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col items-center justify-center mx-auto w-full max-w-3xl h-screen overflow-hidden'>
+            <div className='flex flex-col items-center justify-center mx-auto w-full max-w-3xl'>
                 {slides.length > 0 ? (
                     <div ref={chartRef} style={{ width: '100%', maxWidth: '700px', height: '400px' }} />
                 ) : (
@@ -216,13 +229,20 @@ export const MoistureComponent: React.FC = () => {
                         </div>
                     </div>
                 )}
-                <div className='w-full h-28 overflow-auto'>
+                <h1 className='font-semibold text-2xl text-white text-center m-2'>Informações e últimas atualizações</h1>
+                <div className='w-full h-36 overflow-auto'>
                     {slides.length > 0 ? (
                         slides.map((slide: ItemData) => (
                             <div className='flex flex-col bg-[#202124] text-white rounded-lg p-2.5 m-2.5'>
                                 <span>ID: {slide.id}</span>
                                 <span>Usuário {slide.user_id}</span>
-                                <span>Umidade: {getModelInfo(slide)}%</span>
+                                <div className='mb-2'>
+                                    <span>Umidade: {getModelInfo(slide)}%</span>
+                                </div>
+                                <hr />
+                                <div className='mt-2'>
+                                    <span>Data e horário: {getModelDate(slide)}</span>
+                                </div>
                             </div>
                         ))
                     ) : (

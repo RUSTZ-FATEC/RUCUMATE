@@ -8,6 +8,13 @@ import twitter from '../../../assets/images/twitter.svg'
 import send from '../../../assets/images/send.svg'
 import shield from '../../../assets/images/shield.svg'
 import star from '../../../assets/images/star.svg'
+import git1 from '../../../assets/images/git1.png'
+import git2 from '../../../assets/images/git2.png'
+import git3 from '../../../assets/images/git3.png'
+import git4 from '../../../assets/images/git4.png'
+import git5 from '../../../assets/images/git5.png'
+import git6 from '../../../assets/images/git6.png'
+import git7 from '../../../assets/images/git7.png'
 
 export const navLinks = [
     {
@@ -148,15 +155,42 @@ export const footerLinks = [
         ],
     },
     {
-        title: "Equipes",
+        title: "Equipe",
         links: [
             {
-                name: "Time Monitoria A",
-                link: "https://www.hoobank.com/our-partner/",
+                image: git1,
+                name: "David Marques",
+                link: "https://github.com/DavidMarqss",
             },
             {
-                name: "Grupo ClimaTech",
-                link: "https://www.hoobank.com/become-a-partner/",
+                image: git2,
+                name: "Gabriel Calil",
+                link: "https://github.com/calil05",
+            },
+            {
+                image: git3,
+                name: "Giovanni Giuseppe",
+                link: "https://github.com/giogiuseppe/",
+            },
+            {
+                image: git4,
+                name: "Jefferson Vargas",
+                link: "https://github.com/JeffeVargasP/",
+            },
+            {
+                image: git5,
+                name: "Luis Calvano",
+                link: "https://github.com/luis-cavano/",
+            },
+            {
+                image: git6,
+                name: "Marcos Sakaguchi",
+                link: "https://github.com/Marcossakaguchi5",
+            },
+            {
+                image: git7,
+                name: "Victor Kashima",
+                link: "https://github.com/VictorKashima/",
             },
         ],
     },

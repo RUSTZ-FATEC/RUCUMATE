@@ -146,35 +146,37 @@ export const NotificationComponent: React.FC = () => {
             <div className='flex items-center justify-center mx-auto w-full max-w-7xl h-screen'>
                 <div className="flex flex-col items-center p-5">
                     <h1 className='text-white text-center font-bold text-2xl'>Notificações</h1>
-                    {notifications.length > 0 ? (
-                        <div className="w-full max-w-xl mt-5">
-                            {notifications.map((notification, index) => (
-                                <div key={index} className="bg-[#202124] text-white text-justify rounded-lg p-4 mb-2.5">
-                                    <div className='flex flex-row items-center gap-5'>
-                                        <div>
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18.6667 9.33333H9.33333V18.6667H18.6667V9.33333ZM15.5556 15.5556H12.4444V12.4444H15.5556V15.5556ZM28 12.4444V9.33333H24.8889V6.22222C24.8889 4.51111 23.4889 3.11111 21.7778 3.11111H18.6667V0H15.5556V3.11111H12.4444V0H9.33333V3.11111H6.22222C4.51111 3.11111 3.11111 4.51111 3.11111 6.22222V9.33333H0V12.4444H3.11111V15.5556H0V18.6667H3.11111V21.7778C3.11111 23.4889 4.51111 24.8889 6.22222 24.8889H9.33333V28H12.4444V24.8889H15.5556V28H18.6667V24.8889H21.7778C23.4889 24.8889 24.8889 23.4889 24.8889 21.7778V18.6667H28V15.5556H24.8889V12.4444H28ZM21.7778 21.7778H6.22222V6.22222H21.7778V21.7778Z" fill="white" />
-                                            </svg>
+                    <div className='w-full h-60 overflow-auto'>
+                        {notifications.length > 0 ? (
+                            <div className="w-full max-w-xl mt-5">
+                                {notifications.map((notification, index) => (
+                                    <div key={index} className="bg-[#202124] text-white text-justify rounded-lg p-4 mb-2.5">
+                                        <div className='flex flex-row items-center gap-5'>
+                                            <div>
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18.6667 9.33333H9.33333V18.6667H18.6667V9.33333ZM15.5556 15.5556H12.4444V12.4444H15.5556V15.5556ZM28 12.4444V9.33333H24.8889V6.22222C24.8889 4.51111 23.4889 3.11111 21.7778 3.11111H18.6667V0H15.5556V3.11111H12.4444V0H9.33333V3.11111H6.22222C4.51111 3.11111 3.11111 4.51111 3.11111 6.22222V9.33333H0V12.4444H3.11111V15.5556H0V18.6667H3.11111V21.7778C3.11111 23.4889 4.51111 24.8889 6.22222 24.8889H9.33333V28H12.4444V24.8889H15.5556V28H18.6667V24.8889H21.7778C23.4889 24.8889 24.8889 23.4889 24.8889 21.7778V18.6667H28V15.5556H24.8889V12.4444H28ZM21.7778 21.7778H6.22222V6.22222H21.7778V21.7778Z" fill="white" />
+                                                </svg>
+                                            </div>
+                                            {notification}
                                         </div>
-                                        {notification}
                                     </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-center text-center rounded-xl bg-[#202124] gap-2 p-2 px-5 m-5">
+                                <div className='flex items-center justify-center rounded-full bg-[#404041] p-2'>
+                                    <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                    </svg>
                                 </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="flex items-center justify-center text-center rounded-xl bg-[#202124] gap-2 p-2 px-5 m-5">
-                            <div className='flex items-center justify-center rounded-full bg-[#404041] p-2'>
-                                <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                                </svg>
+                                <div>
+                                    <span className='text-white'>Não há notificações para exibir.</span>
+                                </div>
                             </div>
-                            <div>
-                                <span className='text-white'>Não há notificações para exibir.</span>
-                            </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             </div>
         </>
