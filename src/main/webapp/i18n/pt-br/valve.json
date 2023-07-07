@@ -1,0 +1,25 @@
+{
+  "rucumateApp": {
+    "valve": {
+      "home": {
+        "title": "Valves",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Valve",
+        "createOrEditLabel": "Criar ou editar Valve",
+        "notFound": "Nenhum Valve encontrado"
+      },
+      "created": "Um novo Valve foi criado com o identificador {{ param }}",
+      "updated": "Um Valve foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Valve foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Valve {{ id }}?"
+      },
+      "detail": {
+        "title": "Valve"
+      },
+      "id": "ID",
+      "status": "Status",
+      "user": "User"
+    }
+  }
+}

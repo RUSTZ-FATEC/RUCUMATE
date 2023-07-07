@@ -1,0 +1,35 @@
+{
+  "applications": ["rucumate"],
+  "changelogDate": "20230707012254",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "esp_data",
+  "fields": [
+    {
+      "fieldName": "sensorId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "temperature",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "humidity",
+      "fieldType": "Float"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "EspData",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "espData",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

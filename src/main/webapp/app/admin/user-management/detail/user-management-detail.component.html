@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="user">
+      <h2>
+        <span appTranslate="userManagement.detail.title">Usuário</span> [<strong>{{ user.login }}</strong
+        >]
+      </h2>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="userManagement.login">Login</span></dt>
+        <dd>
+          <span>{{ user.login }}</span>
+          <span *ngIf="user.activated" class="badge bg-success" appTranslate="userManagement.activated">Ativo</span>
+          <span *ngIf="!user.activated" class="badge bg-danger" appTranslate="userManagement.deactivated">Inativo</span>
+        </dd>
+
+        <dt><span appTranslate="userManagement.firstName">Nome</span></dt>
+        <dd>{{ user.firstName }}</dd>
+
+        <dt><span appTranslate="userManagement.lastName">Sobrenome</span></dt>
+        <dd>{{ user.lastName }}</dd>
+
+        <dt><span appTranslate="userManagement.email">E-mail</span></dt>
+        <dd>{{ user.email }}</dd>
+
+        <dt><span appTranslate="userManagement.langKey">Idioma</span></dt>
+        <dd>{{ user.langKey }}</dd>
+
+        <dt><span appTranslate="userManagement.createdBy">Criado por</span></dt>
+        <dd>{{ user.createdBy }}</dd>
+
+        <dt><span appTranslate="userManagement.createdDate">Criado em</span></dt>
+        <dd>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+        <dt><span appTranslate="userManagement.lastModifiedBy">Modificado por</span></dt>
+        <dd>{{ user.lastModifiedBy }}</dd>
+
+        <dt><span appTranslate="userManagement.lastModifiedDate">Modificado em</span></dt>
+        <dd>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+        <dt><span appTranslate="userManagement.profiles">Perfis</span></dt>
+        <dd>
+          <ul class="list-unstyled">
+            <li *ngFor="let authority of user.authorities">
+              <span class="badge bg-info">{{ authority }}</span>
+            </li>
+          </ul>
+        </dd>
+      </dl>
+
+      <button type="submit" routerLink="../../" class="btn btn-info">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+      </button>
+    </div>
+  </div>
+</div>

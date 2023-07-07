@@ -1,0 +1,57 @@
+<div>
+  <div class="d-flex justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <h1 appTranslate="login.title" data-cy="loginTitle">Autenticação</h1>
+      <div class="alert alert-danger" *ngIf="authenticationError" appTranslate="login.messages.error.authentication" data-cy="loginError">
+        <strong>Erro de autenticação!</strong> Por favor verifique suas credenciais e tente novamente.
+      </div>
+      <form class="form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="mb-3">
+          <label class="username-label" for="username" appTranslate="global.form.username.label">Usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="{{ 'global.form.username.placeholder' | translate }}"
+            formControlName="username"
+            #username
+            data-cy="username"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" appTranslate="login.form.password">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="{{ 'login.form.password.placeholder' | translate }}"
+            formControlName="password"
+            data-cy="password"
+          />
+        </div>
+
+        <div class="form-check">
+          <label class="form-check-label" for="rememberMe">
+            <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" formControlName="rememberMe" />
+            <span appTranslate="login.form.rememberme">Manter-me logado</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" appTranslate="login.form.button" data-cy="submit">Entrar</button>
+      </form>
+      <div class="mt-3 alert alert-warning">
+        <a class="alert-link" routerLink="/account/reset/request" appTranslate="login.password.forgot" data-cy="forgetYourPasswordSelector"
+          >Esqueceu sua senha?</a
+        >
+      </div>
+
+      <div class="alert alert-warning">
+        <span appTranslate="global.messages.info.register.noaccount">Não possui uma conta ainda?</span>
+        <a class="alert-link" routerLink="/account/register" appTranslate="global.messages.info.register.link">Crie uma nova conta</a>
+      </div>
+    </div>
+  </div>
+</div>

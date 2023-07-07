@@ -1,0 +1,51 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" appTranslate="metrics.title" data-cy="metricsPageHeading">Métricas da aplicação</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()">
+      <fa-icon icon="sync"></fa-icon> <span appTranslate="metrics.refresh.button">Atualizar</span>
+    </button>
+  </h2>
+
+  <h3 appTranslate="metrics.jvm.title">Métricas da JVM</h3>
+
+  <div class="row" *ngIf="metrics && !updatingMetrics">
+    <app-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></app-jvm-memory>
+
+    <app-jvm-threads class="col-md-4" [threads]="threads"></app-jvm-threads>
+
+    <app-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></app-metrics-system>
+  </div>
+
+  <app-metrics-garbagecollector
+    *ngIf="metrics && metricsKeyExists('garbageCollector')"
+    [updating]="updatingMetrics"
+    [garbageCollectorMetrics]="metrics.garbageCollector"
+  ></app-metrics-garbagecollector>
+
+  <div class="well well-lg" *ngIf="updatingMetrics" appTranslate="metrics.updating">Atualizando...</div>
+
+  <app-metrics-request
+    *ngIf="metrics && metricsKeyExists('http.server.requests')"
+    [updating]="updatingMetrics"
+    [requestMetrics]="metrics['http.server.requests']"
+  ></app-metrics-request>
+
+  <app-metrics-endpoints-requests
+    *ngIf="metrics && metricsKeyExists('services')"
+    [updating]="updatingMetrics"
+    [endpointsRequestsMetrics]="metrics.services"
+  ></app-metrics-endpoints-requests>
+
+  <app-metrics-cache
+    *ngIf="metrics && metricsKeyExists('cache')"
+    [updating]="updatingMetrics"
+    [cacheMetrics]="metrics.cache"
+  ></app-metrics-cache>
+
+  <app-metrics-datasource
+    *ngIf="metrics && metricsKeyExistsAndObjectNotEmpty('databases')"
+    [updating]="updatingMetrics"
+    [datasourceMetrics]="metrics.databases"
+  ></app-metrics-datasource>
+</div>

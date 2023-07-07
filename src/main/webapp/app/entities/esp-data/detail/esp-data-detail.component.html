@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="espData">
+      <h2 data-cy="espDataDetailsHeading"><span appTranslate="rucumateApp.espData.detail.title">Esp Data</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">Código</span></dt>
+        <dd>
+          <span>{{ espData.id }}</span>
+        </dd>
+        <dt><span appTranslate="rucumateApp.espData.sensorId">Sensor Id</span></dt>
+        <dd>
+          <span>{{ espData.sensorId }}</span>
+        </dd>
+        <dt><span appTranslate="rucumateApp.espData.temperature">Temperature</span></dt>
+        <dd>
+          <span>{{ espData.temperature }}</span>
+        </dd>
+        <dt><span appTranslate="rucumateApp.espData.humidity">Humidity</span></dt>
+        <dd>
+          <span>{{ espData.humidity }}</span>
+        </dd>
+        <dt><span appTranslate="rucumateApp.espData.user">User</span></dt>
+        <dd>
+          <span>{{ espData.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Voltar</span>
+      </button>
+
+      <button type="button" [routerLink]="['/esp-data', espData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "rucumateApp": {
+    "espData": {
+      "home": {
+        "title": "Esp Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Esp Data",
+        "createOrEditLabel": "Create or edit a Esp Data",
+        "notFound": "No Esp Data found"
+      },
+      "created": "A new Esp Data is created with identifier {{ param }}",
+      "updated": "A Esp Data is updated with identifier {{ param }}",
+      "deleted": "A Esp Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Esp Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Esp Data"
+      },
+      "id": "ID",
+      "sensorId": "Sensor Id",
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+<div>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-8">
+      <h2 appTranslate="settings.title" [translateValues]="{ username: settingsForm.value.login }" *ngIf="settingsForm.value.login">
+        Configurações para o usuário [<strong>{{ settingsForm.value.login }}</strong
+        >]
+      </h2>
+
+      <div class="alert alert-success" *ngIf="success" appTranslate="settings.messages.success">
+        <strong>Configurações salvas com sucesso!</strong>
+      </div>
+
+      <app-alert-error></app-alert-error>
+
+      <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm" *ngIf="settingsForm.value.login" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="firstName" appTranslate="settings.form.firstname">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="{{ 'settings.form.firstname.placeholder' | translate }}"
+            formControlName="firstName"
+            data-cy="firstname"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('firstName')!.invalid && (settingsForm.get('firstName')!.dirty || settingsForm.get('firstName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.required"
+              appTranslate="settings.messages.validate.firstname.required"
+            >
+              O nome é obrigatório.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.minlength"
+              appTranslate="settings.messages.validate.firstname.minlength"
+            >
+              O nome deve ter pelo menos 1 caractere
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.maxlength"
+              appTranslate="settings.messages.validate.firstname.maxlength"
+            >
+              O nome não pode ter mais de 50 caracteres
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="lastName" appTranslate="settings.form.lastname">Sobrenome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="{{ 'settings.form.lastname.placeholder' | translate }}"
+            formControlName="lastName"
+            data-cy="lastname"
+          />
+
+          <div
+            *ngIf="settingsForm.get('lastName')!.invalid && (settingsForm.get('lastName')!.dirty || settingsForm.get('lastName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.required"
+              appTranslate="settings.messages.validate.lastname.required"
+            >
+              O sobrenome é obrigatório.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.minlength"
+              appTranslate="settings.messages.validate.lastname.minlength"
+            >
+              O sobrenome deve ter pelo menos 1 caractere
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.maxlength"
+              appTranslate="settings.messages.validate.lastname.maxlength"
+            >
+              O sobrenome não pode ter mais de 50 caracteres
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="email" appTranslate="global.form.email.label">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="{{ 'global.form.email.placeholder' | translate }}"
+            formControlName="email"
+            data-cy="email"
+          />
+
+          <div *ngIf="settingsForm.get('email')!.invalid && (settingsForm.get('email')!.dirty || settingsForm.get('email')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.required"
+              appTranslate="global.messages.validate.email.required"
+            >
+              O e-mail é obrigatório.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.email"
+              appTranslate="global.messages.validate.email.invalid"
+            >
+              E-mail inválido.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.minlength"
+              appTranslate="global.messages.validate.email.minlength"
+            >
+              O e-mail deve ter pelo menos 5 caracteres
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.maxlength"
+              appTranslate="global.messages.validate.email.maxlength"
+            >
+              O e-mail não pode ter mais de 50 caracteres
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3" *ngIf="languages && languages.length > 0">
+          <label for="langKey" appTranslate="settings.form.language">Idioma</label>
+          <select class="form-control" id="langKey" name="langKey" formControlName="langKey" data-cy="langKey">
+            <option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="settingsForm.invalid"
+          class="btn btn-primary"
+          appTranslate="settings.form.button"
+          data-cy="submit"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

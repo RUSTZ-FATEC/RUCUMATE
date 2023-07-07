@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="myUserLabel" appTranslate="userManagement.home.createOrEditLabel">Criar ou editar usuário</h2>
+
+      <app-alert-error></app-alert-error>
+
+      <div class="mb-3" [hidden]="!editForm.value.id">
+        <label appTranslate="global.field.id">Código</label>
+        <input type="text" class="form-control" name="id" formControlName="id" readonly />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" appTranslate="userManagement.login">Login</label>
+        <input type="text" class="form-control" name="login" formControlName="login" />
+
+        <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get('login')?.errors?.required" appTranslate="entity.validation.required">
+            O campo é obrigatório.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('login')?.errors?.maxlength"
+            appTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 50 }"
+          >
+            Este campo não pode ter mais de 50 caracteres.
+          </small>
+
+          <small class="form-text text-danger" *ngIf="editForm.get('login')?.errors?.pattern" appTranslate="entity.validation.patternLogin">
+            Este campo só pode conter letras, números e e-mail.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" appTranslate="userManagement.firstName">Nome</label>
+        <input type="text" class="form-control" name="firstName" formControlName="firstName" />
+
+        <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('firstName')?.errors?.maxlength"
+            appTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 50 }"
+          >
+            Este campo não pode ter mais de 50 caracteres.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label appTranslate="userManagement.lastName">Sobrenome</label>
+        <input type="text" class="form-control" name="lastName" formControlName="lastName" />
+
+        <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('lastName')?.errors?.maxlength"
+            appTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 50 }"
+          >
+            Este campo não pode ter mais de 50 caracteres.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" appTranslate="userManagement.email">E-mail</label>
+        <input type="email" class="form-control" name="email" formControlName="email" />
+
+        <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" appTranslate="entity.validation.required">
+            O campo é obrigatório.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('email')?.errors?.maxlength"
+            appTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 100 }"
+          >
+            Este campo não pode ter mais de 100 caracteres.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('email')?.errors?.minlength"
+            appTranslate="entity.validation.minlength"
+            [translateValues]="{ min: 5 }"
+          >
+            Este campo deve ter pelo menos 5 caracteres.
+          </small>
+
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('email')?.errors?.email"
+            appTranslate="global.messages.validate.email.invalid"
+          >
+            E-mail inválido.
+          </small>
+        </div>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label" for="activated">
+          <input
+            class="form-check-input"
+            [attr.disabled]="editForm.value.id === undefined ? 'disabled' : null"
+            type="checkbox"
+            id="activated"
+            name="activated"
+            formControlName="activated"
+          />
+          <span appTranslate="userManagement.activated">Ativo</span>
+        </label>
+      </div>
+
+      <div class="mb-3" *ngIf="languages && languages.length > 0">
+        <label appTranslate="userManagement.langKey">Idioma</label>
+        <select class="form-control" id="langKey" name="langKey" formControlName="langKey">
+          <option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label appTranslate="userManagement.profiles">Perfis</label>
+        <select class="form-control" multiple name="authority" formControlName="authorities">
+          <option *ngFor="let authority of authorities" [value]="authority">{{ authority }}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="previousState()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancelar</span>
+      </button>
+
+      <button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+        <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Salvar</span>
+      </button>
+    </form>
+  </div>
+</div>

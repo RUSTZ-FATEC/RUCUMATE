@@ -1,0 +1,28 @@
+{
+  "applications": ["rucumate"],
+  "changelogDate": "20230707012454",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "valve",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Valve",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "valve",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

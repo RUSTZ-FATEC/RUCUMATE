@@ -1,0 +1,25 @@
+{
+  "rucumateApp": {
+    "notification": {
+      "home": {
+        "title": "Notifications",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Notification",
+        "createOrEditLabel": "Criar ou editar Notification",
+        "notFound": "Nenhum Notification encontrado"
+      },
+      "created": "Um novo Notification foi criado com o identificador {{ param }}",
+      "updated": "Um Notification foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Notification foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Notification {{ id }}?"
+      },
+      "detail": {
+        "title": "Notification"
+      },
+      "id": "ID",
+      "content": "Content",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "applications": ["rucumate"],
+  "changelogDate": "20230707012354",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "notification",
+  "fields": [
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Notification",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "notification",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

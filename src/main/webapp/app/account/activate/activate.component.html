@@ -1,0 +1,16 @@
+<div>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-8">
+      <h1 appTranslate="activate.title">Ativação</h1>
+
+      <div class="alert alert-success" *ngIf="success">
+        <span appTranslate="activate.messages.success"><strong>Sua conta de usuário foi ativada com sucesso.</strong> Favor </span>
+        <a class="alert-link" routerLink="/login" appTranslate="global.messages.info.authenticated.link">entrar</a>.
+      </div>
+
+      <div class="alert alert-danger" *ngIf="error" appTranslate="activate.messages.error">
+        <strong>Seu usuário não pode ser ativado.</strong> Favor utilizar o formulário de cadastro para criar uma nova conta.
+      </div>
+    </div>
+  </div>
+</div>

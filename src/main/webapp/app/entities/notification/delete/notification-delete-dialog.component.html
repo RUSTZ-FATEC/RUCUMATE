@@ -1,0 +1,28 @@
+<form *ngIf="notification" name="deleteForm" (ngSubmit)="confirmDelete(notification.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="notificationDeleteDialogHeading" appTranslate="entity.delete.title">Confirme a exclusão</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <app-alert-error></app-alert-error>
+    <p
+      id="app-delete-notification-heading"
+      appTranslate="rucumateApp.notification.delete.question"
+      [translateValues]="{ id: notification.id }"
+    >
+      Tem certeza de que deseja excluir Notification {{ notification.id }}?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancelar</span>
+    </button>
+
+    <button id="app-confirm-delete-notification" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span appTranslate="entity.action.delete">Excluir</span>
+    </button>
+  </div>
+</form>

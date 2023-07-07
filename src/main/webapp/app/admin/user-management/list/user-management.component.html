@@ -1,0 +1,122 @@
+<div>
+  <h2>
+    <span id="user-management-page-heading" appTranslate="userManagement.home.title" data-cy="userManagementPageHeading">Usuários</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="userManagement.home.refreshListLabel">Atualizar lista</span>
+      </button>
+      <button class="btn btn-primary jh-create-entity" [routerLink]="['./new']">
+        <fa-icon icon="plus"></fa-icon> <span appTranslate="userManagement.home.createLabel">Adicionar</span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="table-responsive" *ngIf="users">
+    <table class="table table-striped" aria-describedby="user-management-page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="transition()">
+          <th scope="col" appSortBy="id"><span appTranslate="global.field.id">Código</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" appSortBy="login"><span appTranslate="userManagement.login">Login</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" appSortBy="email"><span appTranslate="userManagement.email">E-mail</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+          <th scope="col" appSortBy="langKey"><span appTranslate="userManagement.langKey">Idioma</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"><span appTranslate="userManagement.profiles">Perfis</span></th>
+          <th scope="col" appSortBy="createdDate">
+            <span appTranslate="userManagement.createdDate">Criado em</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" appSortBy="lastModifiedBy">
+            <span appTranslate="userManagement.lastModifiedBy">Modificado por</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" appSortBy="lastModifiedDate">
+            <span appTranslate="userManagement.lastModifiedDate">Modificado em</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="users">
+        <tr *ngFor="let user of users; trackBy: trackIdentity">
+          <td>
+            <a [routerLink]="['./', user.login, 'view']">{{ user.id }}</a>
+          </td>
+          <td>{{ user.login }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="setActive(user, true)"
+              *ngIf="!user.activated"
+              appTranslate="userManagement.deactivated"
+            >
+              Inativo
+            </button>
+            <button
+              class="btn btn-success btn-sm"
+              (click)="setActive(user, false)"
+              *ngIf="user.activated"
+              [disabled]="!currentAccount || currentAccount.login === user.login"
+              appTranslate="userManagement.activated"
+            >
+              Ativo
+            </button>
+          </td>
+          <td>{{ user.langKey }}</td>
+          <td>
+            <div *ngFor="let authority of user.authorities">
+              <span class="badge bg-info">{{ authority }}</span>
+            </div>
+          </td>
+          <td>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</td>
+          <td>{{ user.lastModifiedBy }}</td>
+          <td>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['./', user.login, 'view']" class="btn btn-info btn-sm">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+              </button>
+
+              <button type="submit" [routerLink]="['./', user.login, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button
+                type="button"
+                (click)="deleteUser(user)"
+                class="btn btn-danger btn-sm"
+                [disabled]="!currentAccount || currentAccount.login === user.login"
+              >
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="users">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="transition()"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

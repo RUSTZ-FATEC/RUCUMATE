@@ -1,0 +1,111 @@
+<div>
+  <h2 id="page-heading" data-cy="EspDataHeading">
+    <span appTranslate="rucumateApp.espData.home.title">Esp Data</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="rucumateApp.espData.home.refreshListLabel">Atualizar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-esp-data"
+        [routerLink]="['/esp-data/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="rucumateApp.espData.home.createLabel"> Criar novo Esp Data </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="espData?.length === 0">
+    <span appTranslate="rucumateApp.espData.home.notFound">Nenhum Esp Data encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="espData && espData.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">Código</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="sensorId">
+            <div class="d-flex">
+              <span appTranslate="rucumateApp.espData.sensorId">Sensor Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="temperature">
+            <div class="d-flex">
+              <span appTranslate="rucumateApp.espData.temperature">Temperature</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="humidity">
+            <div class="d-flex">
+              <span appTranslate="rucumateApp.espData.humidity">Humidity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="user.id">
+            <div class="d-flex">
+              <span appTranslate="rucumateApp.espData.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let espData of espData; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/esp-data', espData.id, 'view']">{{ espData.id }}</a>
+          </td>
+          <td>{{ espData.sensorId }}</td>
+          <td>{{ espData.temperature }}</td>
+          <td>{{ espData.humidity }}</td>
+          <td>
+            {{ espData.user?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/esp-data', espData.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">Visualizar</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/esp-data', espData.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(espData)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Excluir</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
